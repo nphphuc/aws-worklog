@@ -31,7 +31,7 @@ chapter: false
 
 &emsp; **Internship Duration:** From 05/01/2025 to 18/04/2025
 
-![Your profile picture](/images/avatar.png)
+![Your profile picture](https://media.discordapp.net/attachments/1227176240364916788/1490008242238259250/20260129_115640.jpg?ex=69d27dcf&is=69d12c4f&hm=63260d71508d9019f6e549b448f91e7547728ba6113d477aa4b622bcf4428ebc&=&format=webp&width=659&height=879)
 
 ### Report Content
 
