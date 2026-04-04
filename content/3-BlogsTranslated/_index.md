@@ -6,9 +6,9 @@ chapter: false
 pre: " <b> 3. </b> "
 ---
 
-{{% notice warning %}}
+<!-- {{% notice warning %}}
 ⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
+{{% /notice %}} -->
 
 This section will list and introduce the blogs you have translated. For example:
 
