@@ -23,13 +23,13 @@ chapter: false
 
 &emsp; **Major:** Software Engineer
 
-&emsp; **Class:** AWS082025
+&emsp; **Class:** AWS012026
 
 &emsp; **Internship Company:** Amazon Web Services Vietnam Co., Ltd.
 
 &emsp; **Internship Position:** FCJ Cloud Intern
 
-&emsp; **Internship Duration:** From 12/08/2025 to 12/11/2025
+&emsp; **Internship Duration:** From 05/01/2025 to 18/04/2025
 
 ![Your profile picture](/images/avatar.png)
 
