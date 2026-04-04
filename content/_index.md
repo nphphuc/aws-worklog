@@ -13,15 +13,15 @@ chapter: false
 {{% /notice %}}
 
 ### Student Information:
-&emsp; **Full Name:** Nguyen Van A
+&emsp; **Full Name:** Nguyễn Phạm Hồng Phúc
 
-&emsp; **Phone Number:** 0989888999 
+&emsp; **Phone Number:** 0376343020
 
-&emsp; **Email:** Anguyenvan@gmail.com
+&emsp; **Email:** pavilionforc@gmail.com
 
-&emsp; **University:** Ho Chi Minh City University of Technology and Education
+&emsp; **University:** FPT University HCM
 
-&emsp; **Major:** Information Technology
+&emsp; **Major:** Software Engineer
 
 &emsp; **Class:** AWS082025
 
