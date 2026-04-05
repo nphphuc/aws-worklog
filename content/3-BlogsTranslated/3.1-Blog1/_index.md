@@ -8,7 +8,7 @@ pre: " <b> 3.1. </b> "
 
 # Containers and infrastructure as code, like peanut butter and jelly
 
-by Clare Liguori on 18 OCT 2019 in Amazon EC2 Container Registry, Amazon EC2 Container Service, Amazon Elastic Container Service, Amazon Elastic Kubernetes Service, AWS Cloud Development Kit, AWS CloudFormation, AWS Fargate, Containers Permalink  Share
+> by Clare Liguori | on 18 OCT 2019 | in Amazon EC2 Container Registry, Amazon EC2 Container Service, Amazon Elastic Container Service, Amazon Elastic Kubernetes Service, AWS Cloud Development Kit, AWS CloudFormation, AWS Fargate, Containers Permalink  Share
 
 Infrastructure as code tools like AWS CloudFormation and HashiCorp Terraform enable teams to describe and automate provisioning of cloud infrastructure resources, including container-related resources like Amazon ECS services and Amazon EKS clusters. In this post, I cover why I believe infrastructure as code is especially important for containerized applications, how we use infrastructure as code with containers at Amazon, where I think infrastructure as code tooling is going, and the tools we’re building for Amazon ECS to help you get there.
 
