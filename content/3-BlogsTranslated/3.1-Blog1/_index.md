@@ -93,53 +93,10 @@ new VoteApiStack(app, 'VoteApiService', {
 app.synth();
 ```
 
----
+## Conclusion
 
-## Front Door Microservice
+This post walked through the benefits of infrastructure as code for containerized applications, Amazon’s own best practices for deploying containers with infrastructure as code, the concept of “architecture as code,” and an example of architecture as code with Amazon ECS and the AWS CDK. To try out practicing architecture as code with containerized applications on AWS, check out [the AWS CDK ECS patterns](https://docs.aws.amazon.com/cdk/api/v2/).
 
-- Provides an API Gateway for external REST interaction  
-- Authentication & authorization based on **OIDC** via **Amazon Cognito**  
-- Self-managed *deduplication* mechanism using DynamoDB instead of SNS FIFO because:  
-  1. SNS deduplication TTL is only 5 minutes  
-  2. SNS FIFO requires SQS FIFO  
-  3. Ability to proactively notify the sender that the message is a duplicate  
+We are continuing to explore how we can enable our AWS Containers customers to use infrastructure as code and architecture as code through the AWS CDK and through other tools. We recently put up a [public proposal](https://github.com/aws/containers-roadmap/issues/513) with our plans for a new ECS CLI tool designed around the architecture as code model (feedback is welcome!). We would love to hear your feedback on the CDK ECS patterns [on GitHub](https://github.com/aws/aws-cdk/issues/new/choose). Tell us what patterns are missing, for example what other architecture and microservice patterns you see in your own containerized applications that could be captured in re-usable infrastructure as code components. And, let us know what other infrastructure as code tooling and integrations you would like to see from the Containers team on the [AWS Containers Roadmap](https://github.com/aws/containers-roadmap).
 
----
-
-## Staging ER7 Microservice
-
-- Lambda “trigger” subscribed to the pub/sub hub, filtering messages by attribute  
-- Step Functions Express Workflow to convert ER7 → JSON  
-- Two Lambdas:  
-  1. Fix ER7 formatting (newline, carriage return)  
-  2. Parsing logic  
-- Result or error is pushed back into the pub/sub hub  
-
----
-
-## New Features in the Solution
-
-### 1. AWS CloudFormation Cross-Stack References
-Example *outputs* in the core microservice:
-```yaml
-Outputs:
-  Bucket:
-    Value: !Ref Bucket
-    Export:
-      Name: !Sub ${AWS::StackName}-Bucket
-  ArtifactBucket:
-    Value: !Ref ArtifactBucket
-    Export:
-      Name: !Sub ${AWS::StackName}-ArtifactBucket
-  Topic:
-    Value: !Ref Topic
-    Export:
-      Name: !Sub ${AWS::StackName}-Topic
-  Catalog:
-    Value: !Ref Catalog
-    Export:
-      Name: !Sub ${AWS::StackName}-Catalog
-  CatalogArn:
-    Value: !GetAtt Catalog.Arn
-    Export:
-      Name: !Sub ${AWS::StackName}-CatalogArn
+> TAGS: [Amazon ECS](https://aws.amazon.com/blogs/containers/tag/amazon-ecs/), [Amazon EKS](https://aws.amazon.com/blogs/containers/tag/amazon-eks/), [infrastructure as code](https://aws.amazon.com/blogs/containers/tag/infrastructure-as-code/)
