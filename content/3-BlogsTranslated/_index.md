@@ -6,13 +6,8 @@ chapter: false
 pre: " <b> 3. </b> "
 ---
 
-<!-- {{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}} -->
 
-This section will list and introduce the blogs you have translated. For example:
-
-###  [Blog 1 - Your Essential Guide to Cloud Governance at AWS re:Invent 2025](3.1-Blog1/)
+<!-- ###  [Blog 1 - Your Essential Guide to Cloud Governance at AWS re:Invent 2025](3.1-Blog1/)
 With organizations increasingly recognizing governance as a strategic enabler rather than a compliance burden, this year’s Cloud Governance under AWS Cloud Ops track delivers cutting-edge sessions that bridge the gap between operational excellence and business innovation. The governance landscape is evolving rapidly, and this year’s sessions are organized around four critical themes that reflect the most pressing challenges and opportunities facing cloud governance professionals today.
 
 ###  [Blog 2 - Embracing AI- driven operations and observability at re:Invent 2025](3.2-Blog2/)
@@ -28,4 +23,10 @@ This blog introduces how to start building a data lake in the healthcare sector 
 Infrastructure as code tools like AWS CloudFormation and HashiCorp Terraform enable teams to describe and automate provisioning of cloud infrastructure resources, including container-related resources like Amazon ECS services and Amazon EKS clusters. In this post, I cover why I believe infrastructure as code is especially important for containerized applications, how we use infrastructure as code with containers at Amazon, where I think infrastructure as code tooling is going, and the tools we’re building for Amazon ECS to help you get there.
 
 ###  [Blog 6 - Build and deploy a Spring Boot application to AWS App Runner with a CI/CD pipeline using Terraform](3.6-Blog6/)
+In this blog post, we will show how to run a Spring Boot application at scale on AWS App Runner and set up a pipeline for automatic build and deployment. The sample Spring Boot application used in this blog post is the Spring PetClinic application. The PetClinic application is chosen to demonstrate the use of Spring Boot, Spring MVC, and Spring Data in building a simple but powerful database-oriented application. The PetClinic application persists its data in Amazon Relational Database Service (Amazon RDS). The infrastructure is provisioned and managed with Terraform. -->
+
+###  [Blog 1 - Containers and infrastructure as code, like peanut butter and jelly](3.1-Blog1/)
+Infrastructure as code tools like AWS CloudFormation and HashiCorp Terraform enable teams to describe and automate provisioning of cloud infrastructure resources, including container-related resources like Amazon ECS services and Amazon EKS clusters. In this post, I cover why I believe infrastructure as code is especially important for containerized applications, how we use infrastructure as code with containers at Amazon, where I think infrastructure as code tooling is going, and the tools we’re building for Amazon ECS to help you get there.
+
+###  [Blog 2 - Build and deploy a Spring Boot application to AWS App Runner with a CI/CD pipeline using Terraform](3.2-Blog2/)
 In this blog post, we will show how to run a Spring Boot application at scale on AWS App Runner and set up a pipeline for automatic build and deployment. The sample Spring Boot application used in this blog post is the Spring PetClinic application. The PetClinic application is chosen to demonstrate the use of Spring Boot, Spring MVC, and Spring Data in building a simple but powerful database-oriented application. The PetClinic application persists its data in Amazon Relational Database Service (Amazon RDS). The infrastructure is provisioned and managed with Terraform.
