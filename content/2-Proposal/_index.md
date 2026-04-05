@@ -30,9 +30,10 @@ The solution allows HR to focus on high-value tasks rather than manually reading
 ### 3. Solution Architecture
 The platform uses a Serverless architecture with a clear separation between the API layer and heavy background processing pipelines. All data processing is performed asynchronously to ensure a seamless user experience:
 
-![IoT Weather Station Architecture](/images/2-Proposal/edge_architecture.jpeg)
+<!-- ![IoT Weather Station Architecture](/images/2-Proposal/edge_architecture.jpeg)
 
-![IoT Weather Platform Architecture](/images/2-Proposal/platform_architecture.jpeg)
+![IoT Weather Platform Architecture](/images/2-Proposal/platform_architecture.jpeg) -->
+![SmartHire architecture](https://media.discordapp.net/attachments/1227176240364916788/1490398906859786341/616856582_4425812177640627_3655938540521346192_n.jpg?ex=69d3e9a5&is=69d29825&hm=f0454329e251a7d7d41a528add45eb7362fef9bd7fd2b9873e80ca89ff930db8&=&format=webp)
 
 ### AWS Services Used
 <!-- - **AWS IoT Core**: Ingests MQTT data from 5 stations, scalable to 15.
