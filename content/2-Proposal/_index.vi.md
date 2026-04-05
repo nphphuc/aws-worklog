@@ -1,108 +1,104 @@
 ---
-title: "Bản đề xuất"
-date: 2024-01-01
+title: "Đề xuất"
+date: 2026-01-05
 weight: 2
 chapter: false
 pre: " <b> 2. </b> "
 ---
-<!-- {{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}} -->
 
-Tại phần này, bạn cần tóm tắt các nội dung trong workshop mà bạn **dự tính** sẽ làm.
+# SmartHire AI
+## Giải pháp Serverless trên AWS để Trích xuất CV tự động và Đánh giá Ứng viên
 
-# IoT Weather Platform for Lab Research  
-## Giải pháp AWS Serverless hợp nhất cho giám sát thời tiết thời gian thực  
+### 1. Tóm tắt Điều hành
+SmartHire AI là nền tảng hỗ trợ tuyển dụng được xây dựng trên kiến trúc Serverless 100% trên AWS, nhằm tự động hóa hai quy trình cốt lõi tốn thời gian nhất trong hoạt động HR: nhận và phân tích CV của ứng viên, cũng như tập hợp và đánh giá kết quả phỏng vấn. Hệ thống tận dụng kiến trúc hướng sự kiện kết hợp với các dịch vụ AI sinh tạo (Amazon Bedrock) để cung cấp hiệu suất cao, giảm chi phí băng thông và đánh giá ứng viên công bằng, nhất quán.
 
-### 1. Tóm tắt điều hành  
-IoT Weather Platform được thiết kế dành cho nhóm *ITea Lab* tại TP. Hồ Chí Minh nhằm nâng cao khả năng thu thập và phân tích dữ liệu thời tiết. Nền tảng hỗ trợ tối đa 5 trạm thời tiết, có khả năng mở rộng lên 10–15 trạm, sử dụng thiết bị biên Raspberry Pi kết hợp cảm biến ESP32 để truyền dữ liệu qua MQTT. Nền tảng tận dụng các dịch vụ AWS Serverless để cung cấp giám sát thời gian thực, phân tích dự đoán và tiết kiệm chi phí, với quyền truy cập giới hạn cho 5 thành viên phòng lab thông qua Amazon Cognito.  
+### 2. Phát biểu Vấn đề
+### Vấn đề là gì?
+Tải lên các tệp CV lớn (PDF, DOCX) thông qua máy chủ trung gian thường gây nghẽn băng thông, làm giảm trải nghiệm ứng viên và tăng chi phí cơ sở hạ tầng. Các đội ngũ HR và Lãnh đạo Kỹ thuật phải đọc thủ công từng CV để lọc kỹ năng, tiêu tốn nhiều nhân lực và có nguy cơ bỏ sót những ứng viên tiềm năng. Sau các cuộc phỏng vấn, việc tập hợp phản hồi và so sánh điểm số giữa các ứng viên thường thiếu sự nhất quán và phụ thuộc nhiều vào phán đoán cá nhân của người phỏng vấn.
 
-### 2. Tuyên bố vấn đề  
-*Vấn đề hiện tại*  
-Các trạm thời tiết hiện tại yêu cầu thu thập dữ liệu thủ công, khó quản lý khi có nhiều trạm. Không có hệ thống tập trung cho dữ liệu hoặc phân tích thời gian thực, và các nền tảng bên thứ ba thường tốn kém và quá phức tạp.  
+### Giải pháp
+Nền tảng sử dụng S3 Presigned URLs để ứng viên có thể tải CV trực tiếp lên Amazon S3 mà không cần thông qua Backend, hoàn toàn loại bỏ tắc nghẽn băng thông. Pipeline S3 Event Notification → SQS → Lambda → Amazon Textract tự động trích xuất văn bản thô một cách không đồng bộ ngay khi CV được tải lên. Amazon Bedrock (Claude 3.5 Sonnet) phân tích văn bản thô thành JSON có cấu trúc lưu trữ trong DynamoDB. Trong khi đó, AWS Step Functions điều phối luồng công việc đánh giá phỏng vấn song song dựa trên phương pháp STAR, tự động tạo báo cáo cho HR.
 
-*Giải pháp*  
-Nền tảng sử dụng AWS IoT Core để tiếp nhận dữ liệu MQTT, AWS Lambda và API Gateway để xử lý, Amazon S3 để lưu trữ (bao gồm data lake), và AWS Glue Crawlers cùng các tác vụ ETL để trích xuất, chuyển đổi, tải dữ liệu từ S3 data lake sang một S3 bucket khác để phân tích. AWS Amplify với Next.js cung cấp giao diện web, và Amazon Cognito đảm bảo quyền truy cập an toàn. Tương tự như Thingsboard và CoreIoT, người dùng có thể đăng ký thiết bị mới và quản lý kết nối, nhưng nền tảng này hoạt động ở quy mô nhỏ hơn và phục vụ mục đích sử dụng nội bộ. Các tính năng chính bao gồm bảng điều khiển thời gian thực, phân tích xu hướng và chi phí vận hành thấp.  
+### Lợi ích và Lợi nhuận Đầu tư
+Giải pháp cho phép HR tập trung vào các nhiệm vụ có giá trị cao thay vì đọc thủ công từng hồ sơ, giảm thời gian sàng lọc CV đi 80%. Báo cáo sau phỏng vấn được tạo tự động trong chưa đến 90 giây thông qua xử lý song song, đảm bảo tiêu chí đánh giá nhất quán và khách quan cho tất cả ứng viên. Kiến trúc Serverless Trả tiền theo cách sử dụng tối ưu hóa chi phí hoạt động và mở rộng quy mô vô hạn để hỗ trợ các chiến dịch tuyển dụng quy mô lớn.
 
-*Lợi ích và hoàn vốn đầu tư (ROI)*  
-Giải pháp tạo nền tảng cơ bản để các thành viên phòng lab phát triển một nền tảng IoT lớn hơn, đồng thời cung cấp nguồn dữ liệu cho những người nghiên cứu AI phục vụ huấn luyện mô hình hoặc phân tích. Nền tảng giảm bớt báo cáo thủ công cho từng trạm thông qua hệ thống tập trung, đơn giản hóa quản lý và bảo trì, đồng thời cải thiện độ tin cậy dữ liệu. Chi phí hàng tháng ước tính 0,66 USD (theo AWS Pricing Calculator), tổng cộng 7,92 USD cho 12 tháng. Tất cả thiết bị IoT đã được trang bị từ hệ thống trạm thời tiết hiện tại, không phát sinh chi phí phát triển thêm. Thời gian hoàn vốn 6–12 tháng nhờ tiết kiệm đáng kể thời gian thao tác thủ công.  
+### 3. Kiến trúc Giải pháp
+Nền tảng sử dụng kiến trúc Serverless với sự phân tách rõ ràng giữa lớp API và các pipeline xử lý nền nặng. Tất cả xử lý dữ liệu được thực hiện không đồng bộ để đảm bảo trải nghiệm người dùng liền mạch:
 
-### 3. Kiến trúc giải pháp  
-Nền tảng áp dụng kiến trúc AWS Serverless để quản lý dữ liệu từ 5 trạm dựa trên Raspberry Pi, có thể mở rộng lên 15 trạm. Dữ liệu được tiếp nhận qua AWS IoT Core, lưu trữ trong S3 data lake và xử lý bởi AWS Glue Crawlers và ETL jobs để chuyển đổi và tải vào một S3 bucket khác cho mục đích phân tích. Lambda và API Gateway xử lý bổ sung, trong khi Amplify với Next.js cung cấp bảng điều khiển được bảo mật bởi Cognito.  
+![Kiến trúc SmartHire](https://res.cloudinary.com/diahbkjog/image/upload/v1775413223/smarthire_architecture_cugoh4.png)
 
-![IoT Weather Station Architecture](/images/2-Proposal/edge_architecture.jpeg)
+### Các Dịch vụ AWS được Sử dụng
+- **Amazon S3**: Lưu trữ CV gốc, tạo Presigned URLs cho tải lên trực tiếp của ứng viên, và lưu trữ báo cáo PDF/HTML cuối cùng.
+- **Amazon SQS**: Hàng đợi tin nhắn ngăn chặn hệ thống bị quá tải khi hàng ngàn CV được tải lên cùng một lúc.
+- **AWS Lambda**: Các hàm worker thực thi logic gọi AI, xử lý dữ liệu và lưu trữ kết quả.
+- **Amazon Textract**: Công cụ Nhận dạng ký tự quang học (OCR) để trích xuất văn bản từ các định dạng tệp PDF và DOCX.
+- **Amazon Bedrock**: Cung cấp LLM (Claude 3.5 Sonnet) để phân tích CV ngữ nghĩa và đánh giá câu trả lời phỏng vấn.
+- **AWS Step Functions**: Điều phối các luồng công việc nhiều bước để đánh giá ứng viên song song.
+- **Amazon DynamoDB**: Lưu trữ siêu dữ liệu ứng viên, cấu trúc kỹ năng được trích xuất và trạng thái xử lý.
+- **Amazon API Gateway**: Cổng giao tiếp giữa Frontend và các hàm Lambda Backend.
+- **Amazon Cognito**: Xác thực và phân quyền cho người dùng (ứng viên, HR, nhà tuyển dụng).
 
-![IoT Weather Platform Architecture](/images/2-Proposal/platform_architecture.jpeg)
+### Thiết kế Thành phần
+- **Lớp Tải lên CV**: Frontend gọi API Gateway → Lambda → tạo S3 Presigned URL; ứng viên PUT tệp trực tiếp lên S3.
+- **Pipeline Hướng sự kiện**: S3 Event Notification kích hoạt SQS → Lambda Worker gọi Textract và Bedrock → lưu JSON trong DynamoDB.
+- **Luồng công việc Đánh giá AI**: Step Functions Express Workflow điều phối Parse → ScoreParallel → Aggregate → GenerateReport.
+- **Lớp Thông báo**: Lambda cập nhật trạng thái xử lý và cung cấp kết quả cho Frontend thông qua AppSync (GraphQL Subscription).
+- **Xác thực & Bảo mật**: Cognito User Pool phát hành mã thông báo JWT; API Gateway sử dụng Cognito Authorizer để xác thực mọi yêu cầu được bảo vệ.
 
-*Dịch vụ AWS sử dụng*  
-- *AWS IoT Core*: Tiếp nhận dữ liệu MQTT từ 5 trạm, mở rộng lên 15.  
-- *AWS Lambda*: Xử lý dữ liệu và kích hoạt Glue jobs (2 hàm).  
-- *Amazon API Gateway*: Giao tiếp với ứng dụng web.  
-- *Amazon S3*: Lưu trữ dữ liệu thô (data lake) và dữ liệu đã xử lý (2 bucket).  
-- *AWS Glue*: Crawlers lập chỉ mục dữ liệu, ETL jobs chuyển đổi và tải dữ liệu.  
-- *AWS Amplify*: Lưu trữ giao diện web Next.js.  
-- *Amazon Cognito*: Quản lý quyền truy cập cho người dùng phòng lab.  
+### 4. Triển khai Kỹ thuật
+**Các Giai đoạn Triển khai**
+Dự án được cung cấp trong 4 giai đoạn liên tiếp trong thời kỳ thực tập:
+- **Giai đoạn 1 — Cơ sở hạ tầng Lưu trữ & API Tải lên (Tuần 1):** Thiết lập nhóm S3, định cấu hình IAM Roles, và xây dựng Lambda API để tạo Presigned URLs cho Frontend. Ứng viên tải CV trực tiếp lên S3 mà không cần qua Backend.
+- **Giai đoạn 2 — Pipeline Hướng sự kiện & Textract (Tuần 2):** Định cấu hình S3 Event Notification → SQS trigger → Lambda Worker được tích hợp với Amazon Textract để trích xuất văn bản thô từ các tệp PDF/DOCX.
+- **Giai đoạn 3 — Tích hợp Bedrock & DynamoDB (Tuần 3):** Thiết kế Kỹ thuật Kỹ dẫn lời nhắc, gọi Amazon Bedrock (Claude 3.5 Sonnet) để phân tích văn bản thô thành JSON (`skills`, `yearsOfExperience`, `education`), và lưu trữ kết quả trong DynamoDB.
+- **Giai đoạn 4 — Step Functions & Hoàn thành (Tuần 4):** Xây dựng Step Functions Express Workflow với Parallel State cho đánh giá phỏng vấn đồng thời, tạo báo cáo PDF/HTML được lưu trở lại S3. Tiến hành kiểm thử bảo mật, tối ưu hóa và tài liệu.
 
-*Thiết kế thành phần*  
-- *Thiết bị biên*: Raspberry Pi thu thập và lọc dữ liệu cảm biến, gửi tới IoT Core.  
-- *Tiếp nhận dữ liệu*: AWS IoT Core nhận tin nhắn MQTT từ thiết bị biên.  
-- *Lưu trữ dữ liệu*: Dữ liệu thô lưu trong S3 data lake; dữ liệu đã xử lý lưu ở một S3 bucket khác.  
-- *Xử lý dữ liệu*: AWS Glue Crawlers lập chỉ mục dữ liệu; ETL jobs chuyển đổi để phân tích.  
-- *Giao diện web*: AWS Amplify lưu trữ ứng dụng Next.js cho bảng điều khiển và phân tích thời gian thực.  
-- *Quản lý người dùng*: Amazon Cognito giới hạn 5 tài khoản hoạt động.  
+**Yêu cầu Kỹ thuật**
+- **Pipeline Phân tích CV:** Nhóm S3 (tiền tố `cvs/`), Hàng đợi SQS Tiêu chuẩn với DLQ, Lambda runtime Python 3.12, Amazon Textract AnalyzeDocument API, Amazon Bedrock InvokeModel API (claude-3-5-sonnet), Bảng DynamoDB với Single Table Design.
+- **Luồng công việc Đánh giá AI:** Step Functions Express Workflow, Parallel State với tối đa 10 nhánh đồng thời, Lambda được tích hợp với Bedrock để tạo tóm tắt toàn bộ, S3 cho lưu trữ đầu ra báo cáo.
+- **API & Xác thực:** API Gateway REST API, Cognito User Pool + App Client, JWT Authorizer trên tất cả các điểm cuối được bảo vệ.
 
-### 4. Triển khai kỹ thuật  
-*Các giai đoạn triển khai*  
-Dự án gồm 2 phần — thiết lập trạm thời tiết biên và xây dựng nền tảng thời tiết — mỗi phần trải qua 4 giai đoạn:  
-1. *Nghiên cứu và vẽ kiến trúc*: Nghiên cứu Raspberry Pi với cảm biến ESP32 và thiết kế kiến trúc AWS Serverless (1 tháng trước kỳ thực tập).  
-2. *Tính toán chi phí và kiểm tra tính khả thi*: Sử dụng AWS Pricing Calculator để ước tính và điều chỉnh (Tháng 1).  
-3. *Điều chỉnh kiến trúc để tối ưu chi phí/giải pháp*: Tinh chỉnh (ví dụ tối ưu Lambda với Next.js) để đảm bảo hiệu quả (Tháng 2).  
-4. *Phát triển, kiểm thử, triển khai*: Lập trình Raspberry Pi, AWS services với CDK/SDK và ứng dụng Next.js, sau đó kiểm thử và đưa vào vận hành (Tháng 2–3).  
+### 5. Lịch trình & Mốc quan trọng
+**Lịch trình Dự án**
+- **Tuần 1:** Thiết lập nhóm S3, xây dựng API Presigned URL; định cấu hình IAM Roles cho Lambda; kiểm thử luồng tải lên trực tiếp từ Frontend.
+- **Tuần 2:** Xây dựng Pipeline Hướng sự kiện: S3 Event Notification → SQS → Lambda; tích hợp và kiểm thử Amazon Textract trên các định dạng PDF và DOCX khác nhau.
+- **Tuần 3:** Thiết kế Kỹ thuật Kỹ dẫn lời nhắc cho Amazon Bedrock; chuẩn hóa đầu ra JSON; lưu trữ siêu dữ liệu trong DynamoDB; đánh giá độ chính xác của trích xuất.
+- **Tuần 4:** Xây dựng State Machine Step Functions với Parallel scoring; tạo báo cáo PDF/HTML; tiến hành kiểm thử bảo mật (IAM, Cognito, S3 Bucket Policy) và hoàn thành tài liệu.
 
-*Yêu cầu kỹ thuật*  
-- *Trạm thời tiết biên*: Cảm biến (nhiệt độ, độ ẩm, lượng mưa, tốc độ gió), vi điều khiển ESP32, Raspberry Pi làm thiết bị biên. Raspberry Pi chạy Raspbian, sử dụng Docker để lọc dữ liệu và gửi 1 MB/ngày/trạm qua MQTT qua Wi-Fi.  
-- *Nền tảng thời tiết*: Kiến thức thực tế về AWS Amplify (lưu trữ Next.js), Lambda (giảm thiểu do Next.js xử lý), AWS Glue (ETL), S3 (2 bucket), IoT Core (gateway và rules), và Cognito (5 người dùng). Sử dụng AWS CDK/SDK để lập trình (ví dụ IoT Core rules tới S3). Next.js giúp giảm tải Lambda cho ứng dụng web fullstack.  
+### 6. Ước tính Ngân sách
+Bạn có thể khám phá ước tính chi phí trên [AWS Pricing Calculator](https://calculator.aws/).
 
-### 5. Lộ trình & Mốc triển khai  
-- *Trước thực tập (Tháng 0)*: 1 tháng lên kế hoạch và đánh giá trạm cũ.  
-- *Thực tập (Tháng 1–3)*:  
-    - Tháng 1: Học AWS và nâng cấp phần cứng.  
-    - Tháng 2: Thiết kế và điều chỉnh kiến trúc.  
-    - Tháng 3: Triển khai, kiểm thử, đưa vào sử dụng.  
-- *Sau triển khai*: Nghiên cứu thêm trong vòng 1 năm.  
+### Chi phí Cơ sở hạ tầng
+- **AWS Lambda:** $0.00/tháng (nằm trong Free Tier — 1 triệu request đầu tiên miễn phí).
+- **Amazon S3 Standard:** ~$0.05/tháng (lưu trữ CV và báo cáo, ~2 GB).
+- **Amazon SQS:** $0.00/tháng (dưới 1 triệu request/tháng — Free Tier).
+- **Amazon Textract:** ~$0.015/trang (AnalyzeDocument API).
+- **Amazon Bedrock (Claude 3.5 Sonnet):** ~$0.10–$0.30/tháng tùy theo khối lượng xử lý CV.
+- **AWS Step Functions:** $0.00/tháng (4.000 chuyển tiếp trạng thái đầu tiên miễn phí).
+- **Amazon DynamoDB:** $0.00/tháng (25 GB lưu trữ + 25 WCU/RCU — Free Tier).
+- **Amazon API Gateway:** ~$0.01/tháng (dưới 1 triệu lệnh gọi).
 
-### 6. Ước tính ngân sách  
-Có thể xem chi phí trên [AWS Pricing Calculator](https://calculator.aws/#/estimate?id=621f38b12a1ef026842ba2ddfe46ff936ed4ab01)  
-Hoặc tải [tệp ước tính ngân sách](../attachments/budget_estimation.pdf).  
+**Tổng Ước tính Chi phí: ~$0.50–$1.00/tháng** (tùy thuộc vào khối lượng lưu thông CV thực tế)
 
-*Chi phí hạ tầng*  
-- AWS Lambda: 0,00 USD/tháng (1.000 request, 512 MB lưu trữ).  
-- S3 Standard: 0,15 USD/tháng (6 GB, 2.100 request, 1 GB quét).  
-- Truyền dữ liệu: 0,02 USD/tháng (1 GB vào, 1 GB ra).  
-- AWS Amplify: 0,35 USD/tháng (256 MB, request 500 ms).  
-- Amazon API Gateway: 0,01 USD/tháng (2.000 request).  
-- AWS Glue ETL Jobs: 0,02 USD/tháng (2 DPU).  
-- AWS Glue Crawlers: 0,07 USD/tháng (1 crawler).  
-- MQTT (IoT Core): 0,08 USD/tháng (5 thiết bị, 45.000 tin nhắn).  
+### 7. Đánh giá Rủi ro
+#### Ma trận Rủi ro
+- **Kỹ thuật Kỹ dẫn lời nhắc Không chính xác:** Ảnh hưởng cao, xác suất trung bình — trích xuất CV tạo ra các giá trị trường không chính xác.
+- **Lambda Hết thời gian chờ:** Ảnh hưởng trung bình, xác suất thấp — tệp CV quá lớn hoặc Textract/Bedrock phản hồi chậm.
+- **Bedrock Chi phí Vượt ngân sách:** Ảnh hưởng trung bình, xác suất thấp — nếu khối lượng tải CV tăng đột ngột.
+- **Tích Lũy Tin nhắn DLQ:** Ảnh hưởng thấp, xác suất trung bình — Lambda Worker liên tục không thể xử lý tin nhắn.
 
-*Tổng*: 0,7 USD/tháng, 8,40 USD/12 tháng  
-- *Phần cứng*: 265 USD một lần (Raspberry Pi 5 và cảm biến).  
+#### Chiến lược Giảm thiểu
+- **Kỹ thuật Kỹ dẫn lời nhắc:** Xây dựng bộ kiểm thử bằng các CV đa dạng (tiếng Việt, tiếng Anh, nhiều định dạng); đánh giá độ chính xác mỗi lần lặp lại trước khi triển khai.
+- **Lambda Hết thời gian chờ:** Tăng timeout khi cần (tối đa 15 phút); chia các bước Textract và Bedrock thành hai hàm Lambda riêng biệt nếu cần thiết.
+- **Chi phí:** Thiết lập Cảnh báo AWS Budget để thông báo khi chi tiêu vượt $5/tháng; sử dụng giá Bedrock On-Demand thay vì Provisioned.
+- **DLQ:** Cấu hình CloudWatch Alarm để theo dõi `ApproximateNumberOfMessagesNotVisible`; tạo runbook để xử lý lại DLQ định kỳ.
 
-### 7. Đánh giá rủi ro  
-*Ma trận rủi ro*  
-- Mất mạng: Ảnh hưởng trung bình, xác suất trung bình.  
-- Hỏng cảm biến: Ảnh hưởng cao, xác suất thấp.  
-- Vượt ngân sách: Ảnh hưởng trung bình, xác suất thấp.  
+#### Kế hoạch Dự phòng
+- Nếu Bedrock không khả dụng: quay lại phân tích dựa trên Regex để giữ pipeline hoạt động.
+- Nếu Step Functions gặp sự cố: thực hiện lại các lần thực thi thủ công qua AWS Console hoặc CLI.
 
-*Chiến lược giảm thiểu*  
-- Mạng: Lưu trữ cục bộ trên Raspberry Pi với Docker.  
-- Cảm biến: Kiểm tra định kỳ, dự phòng linh kiện.  
-- Chi phí: Cảnh báo ngân sách AWS, tối ưu dịch vụ.  
-
-*Kế hoạch dự phòng*  
-- Quay lại thu thập thủ công nếu AWS gặp sự cố.  
-- Sử dụng CloudFormation để khôi phục cấu hình liên quan đến chi phí.  
-
-### 8. Kết quả kỳ vọng  
-*Cải tiến kỹ thuật*: Dữ liệu và phân tích thời gian thực thay thế quy trình thủ công. Có thể mở rộng tới 10–15 trạm.  
-*Giá trị dài hạn*: Nền tảng dữ liệu 1 năm cho nghiên cứu AI, có thể tái sử dụng cho các dự án tương lai.
+### 8. Kết quả Kỳ vọng
+#### Cải tiến Kỹ thuật: 
+Tải lên và xử lý CV nhanh chóng, liền mạch mà không có gián đoạn, nhờ kiến trúc hoàn toàn không đồng bộ. Hệ thống có thể mở rộng vô hạn để xử lý các chiến dịch tuyển dụng quy mô lớn mà không cần nâng cấp máy chủ.
+#### Giá trị Dài hạn
+Giảm **80%** thời gian đọc và phân loại CV thủ công. Báo cáo sau phỏng vấn được tạo tự động trong **chưa đến 90 giây** thông qua xử lý song song. Tiêu chí đánh giá nhất quán, khách quan có thể tái sử dụng trên nhiều vị trí công việc. Mô hình Serverless Trả tiền theo cách sử dụng tối ưu hóa chi phí hoạt động bằng cách chỉ tính phí cho mức sử dụng thực tế.
