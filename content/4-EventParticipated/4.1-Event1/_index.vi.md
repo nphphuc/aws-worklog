@@ -6,120 +6,49 @@ chapter: false
 pre: " <b> 4.1. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
+# Sự kiện đã tham gia: Báo cáo tổng kết
 
-# Bài thu hoạch “GenAI-powered App-DB Modernization workshop”
+---
 
-### Mục Đích Của Sự Kiện
+## Báo cáo tổng kết: “AWS re:Invent Recap HCMC”
 
-- Chia sẻ best practices trong thiết kế ứng dụng hiện đại
-- Giới thiệu phương pháp DDD và event-driven architecture
-- Hướng dẫn lựa chọn compute services phù hợp
-- Giới thiệu công cụ AI hỗ trợ development lifecycle
+### Mục tiêu sự kiện
+* Tìm hiểu sâu về các bản phát hành sản phẩm mới nhất, bản cập nhật dịch vụ và các best practice về kiến trúc trực tiếp từ sự kiện AWS re:Invent.
+* Cung cấp các phiên kỹ thuật tập trung vào việc mở rộng hạ tầng, hiện đại hóa ứng dụng và bảo mật đám mây.
+* Giúp các lập trình viên và quản lý kỹ thuật khám phá các chiến lược nâng cấp hệ thống cũ bằng các công cụ cloud-native hiện đại.
+* Thúc đẩy kết nối và giao lưu trong cộng đồng các kỹ sư và kiến trúc sư cloud tại địa phương.
 
-### Danh Sách Diễn Giả
+### Các điểm nhấn chính
+Sự kiện bao quát một loạt các cập nhật cốt lõi của AWS, tập trung vào Cơ sở hạ tầng & Hiện đại hóa ứng dụng (Track 1):
+* **Chiến lược Hybrid & Multi-Cloud:** Xây dựng môi trường cloud linh hoạt, nhanh nhẹn và có khả năng phục hồi, trải dài trên nhiều cơ sở hạ tầng khác nhau.
+* **Tiến bộ trong Container hóa:** Đơn giản hóa việc triển khai, mở rộng và quản lý các ứng dụng dựa trên container trên AWS (ECS, EKS, Fargate).
+* **Cơ sở dữ liệu chuyên dụng (Purpose-Built Databases):** Dịch chuyển khỏi cơ sở dữ liệu quan hệ nguyên khối bằng cách tối ưu hóa workload và chọn đúng loại cơ sở dữ liệu cho đúng bài toán (NoSQL, Graph, Time-Series).
+* **Hiện đại hóa bằng AI:** Khám phá các công cụ như AWS Transform để tự động nâng cấp và refactor codebase của các hệ thống cũ.
+* **Bảo mật đám mây:** Tăng cường bảo vệ hệ thống bằng các tính năng phát hiện mối đe dọa tự động, thông minh và các framework tuân thủ.
+* **Cơ sở hạ tầng nội địa:** Công bố điểm kết nối Vietnam DirectConnect POP mới giúp giảm thiểu đáng kể độ trễ và mang lại kết nối an toàn cho các doanh nghiệp Việt Nam.
 
-- **Jignesh Shah** - Director, Open Source Databases
-- **Erica Liu** - Sr. GTM Specialist, AppMod
-- **Fabrianne Effendi** - Assc. Specialist SA, Serverless Amazon Web Services
+### Bài học rút ra
+* **Tư duy thiết kế**
+    * **Đúng công cụ cho đúng việc:** Ngừng ép mọi dữ liệu vào cơ sở dữ liệu quan hệ; áp dụng các cơ sở dữ liệu chuyên dụng dựa trên các pattern truy xuất dữ liệu cụ thể của ứng dụng.
+    * **Nhanh nhẹn & Linh hoạt:** Các kiến trúc hiện đại phải được thiết kế để mở rộng tự động và có thể chịu tải qua các đợt tăng lưu lượng đột biến bằng cách sử dụng kiến trúc container hóa và serverless.
+* **Kiến trúc kỹ thuật**
+    * **Hệ thống Decoupled (Tách rời):** Sử dụng nhiều container để đảm bảo các ứng dụng luôn portable (dễ dàng di chuyển) và dễ quản lý trên các môi trường hybrid.
+* **Chiến lược hiện đại hóa**
+    * **Refactor với sự hỗ trợ của AI:** Việc áp dụng các công cụ AI (như AWS Transform) giờ đây là một phần cốt lõi của vòng đời hiện đại hóa ứng dụng, giúp giảm đáng kể thời gian cần thiết để nâng cấp code cũ.
 
-### Nội Dung Nổi Bật
+### Áp dụng vào công việc
+* **Tối ưu hóa việc sử dụng Database:** Xem xét lại kiến trúc hiện tại của các dự án để đảm bảo chúng ta đang tận dụng các cơ sở dữ liệu chuyên dụng thay vì dựa vào phương pháp "one-size-fits-all" (một giải pháp cho mọi vấn đề).
+* **Cải thiện Pipeline Container:** Áp dụng các best practice mới nhất cho EKS và ECS để cải thiện hiệu quả của quá trình triển khai CI/CD.
+* **Đánh giá DirectConnect:** Đánh giá xem điểm DirectConnect POP mới tại Việt Nam có thể giúp giảm độ trễ cho người dùng nội địa và các dịch vụ backend của chúng ta như thế nào.
 
-#### Đưa ra các ảnh hưởng tiêu cực của kiến trúc ứng dụng cũ
+### Trải nghiệm sự kiện
+Việc tham gia **“AWS re:Invent Recap HCMC”** mang lại giá trị cực kỳ lớn, vì nó mang quy mô khổng lồ và những công bố mới nhất từ hội nghị toàn cầu đến trực tiếp cộng đồng địa phương. Các trải nghiệm chính bao gồm:
+* **Học hỏi từ các chuyên gia trong ngành:** Có được góc nhìn rộng hơn về cách các công ty toàn cầu đang thiết kế kiến trúc hạ tầng của họ để đạt quy mô cực lớn.
+* **Tiếp cận kỹ thuật chuyên sâu:** Việc tập trung vào các cơ sở dữ liệu chuyên dụng và chuyển đổi code với sự hỗ trợ của AI đã cung cấp những insight thực tế để giải quyết technical debt (nợ kỹ thuật).
+* **Giao lưu và thảo luận:** Sự kiện mang đến những cơ hội tuyệt vời để trao đổi ý tưởng với những người đam mê cloud và các kiến trúc sư AWS tại địa phương, củng cố tầm quan trọng của cộng đồng trong ngành công nghệ.
+* **Bài học kinh nghiệm:** Hành trình hiện đại hóa là một quá trình liên tục. Tận dụng AI không chỉ cho các tính năng, mà để refactor và bảo mật chính cơ sở hạ tầng nền tảng, đang trở thành tiêu chuẩn mới.
 
-- Thời gian release sản phẩm lâu → Mất doanh thu/bỏ lỡ cơ hội
-- Hoạt động kém hiệu quả → Mất năng suất, tốn kém chi phí
-- Không tuân thủ các quy định về bảo mật → Mất an ninh, uy tín
+### Một số hình ảnh sự kiện
+*[Thêm hình ảnh sự kiện của bạn vào đây]*
 
-#### Chuyển đổi sang kiến trúc ứng dụng mới - Microservice Architecture
-
-Chuyển đổi thành hệ thống modular – từng chức năng là một **dịch vụ độc lập** giao tiếp với nhau qua **sự kiện** với 3 trụ cột cốt lõi:
-
-- **Queue Management**: Xử lý tác vụ bất đồng bộ
-- **Caching Strategy:** Tối ưu performance
-- **Message Handling:** Giao tiếp linh hoạt giữa services
-
-#### Domain-Driven Design (DDD)
-
-- **Phương pháp 4 bước**: Xác định domain events → sắp xếp timeline → identify actors → xác định bounded contexts
-- **Case study bookstore**: Minh họa cách áp dụng DDD thực tế
-- **Context mapping**: 7 patterns tích hợp bounded contexts
-
-#### Event-Driven Architecture
-
-- **3 patterns tích hợp**: Publish/Subscribe, Point-to-point, Streaming
-- **Lợi ích**: Loose coupling, scalability, resilience
-- **So sánh sync vs async**: Hiểu rõ trade-offs (sự đánh đổi)
-
-#### Compute Evolution
-
-- **Shared Responsibility Model**: Từ EC2 → ECS → Fargate → Lambda
-- **Serverless benefits**: No server management, auto-scaling, pay-for-value
-- **Functions vs Containers**: Criteria lựa chọn phù hợp
-
-#### Amazon Q Developer
-
-- **SDLC automation**: Từ planning đến maintenance
-- **Code transformation**: Java upgrade, .NET modernization
-- **AWS Transform agents**: VMware, Mainframe, .NET migration
-
-### Những Gì Học Được
-
-#### Tư Duy Thiết Kế
-
-- **Business-first approach**: Luôn bắt đầu từ business domain, không phải technology
-- **Ubiquitous language**: Importance của common vocabulary giữa business và tech teams
-- **Bounded contexts**: Cách identify và manage complexity trong large systems
-
-#### Kiến Trúc Kỹ Thuật
-
-- **Event storming technique**: Phương pháp thực tế để mô hình hóa quy trình kinh doanh
-- Sử dụng **Event-driven communication** thay vì synchronous calls
-- **Integration patterns**: Hiểu khi nào dùng sync, async, pub/sub, streaming
-- **Compute spectrum**: Criteria chọn từ VM → containers → serverless
-
-#### Chiến Lược Hiện Đại Hóa
-
-- **Phased approach**: Không rush, phải có roadmap rõ ràng
-- **7Rs framework**: Nhiều con đường khác nhau tùy thuộc vào đặc điểm của mỗi ứng dụng
-- **ROI measurement**: Cost reduction + business agility
-
-### Ứng Dụng Vào Công Việc
-
-- **Áp dụng DDD** cho project hiện tại: Event storming sessions với business team
-- **Refactor microservices**: Sử dụng bounded contexts để identify service boundaries
-- **Implement event-driven patterns**: Thay thế một số sync calls bằng async messaging
-- **Serverless adoption**: Pilot AWS Lambda cho một số use cases phù hợp
-- **Try Amazon Q Developer**: Integrate vào development workflow để boost productivity
-
-### Trải nghiệm trong event
-
-Tham gia workshop **“GenAI-powered App-DB Modernization”** là một trải nghiệm rất bổ ích, giúp tôi có cái nhìn toàn diện về cách hiện đại hóa ứng dụng và cơ sở dữ liệu bằng các phương pháp và công cụ hiện đại. Một số trải nghiệm nổi bật:
-
-#### Học hỏi từ các diễn giả có chuyên môn cao
-- Các diễn giả đến từ AWS và các tổ chức công nghệ lớn đã chia sẻ **best practices** trong thiết kế ứng dụng hiện đại.
-- Qua các case study thực tế, tôi hiểu rõ hơn cách áp dụng **Domain-Driven Design (DDD)** và **Event-Driven Architecture** vào các project lớn.
-
-#### Trải nghiệm kỹ thuật thực tế
-- Tham gia các phiên trình bày về **event storming** giúp tôi hình dung cách **mô hình hóa quy trình kinh doanh** thành các domain events.
-- Học cách **phân tách microservices** và xác định **bounded contexts** để quản lý sự phức tạp của hệ thống lớn.
-- Hiểu rõ trade-offs giữa **synchronous và asynchronous communication** cũng như các pattern tích hợp như **pub/sub, point-to-point, streaming**.
-
-#### Ứng dụng công cụ hiện đại
-- Trực tiếp tìm hiểu về **Amazon Q Developer**, công cụ AI hỗ trợ SDLC từ lập kế hoạch đến maintenance.
-- Học cách **tự động hóa code transformation** và pilot serverless với **AWS Lambda**, từ đó nâng cao năng suất phát triển.
-
-#### Kết nối và trao đổi
-- Workshop tạo cơ hội trao đổi trực tiếp với các chuyên gia, đồng nghiệp và team business, giúp **nâng cao ngôn ngữ chung (ubiquitous language)** giữa business và tech.
-- Qua các ví dụ thực tế, tôi nhận ra tầm quan trọng của **business-first approach**, luôn bắt đầu từ nhu cầu kinh doanh thay vì chỉ tập trung vào công nghệ.
-
-#### Bài học rút ra
-- Việc áp dụng DDD và event-driven patterns giúp giảm **coupling**, tăng **scalability** và **resilience** cho hệ thống.
-- Chiến lược hiện đại hóa cần **phased approach** và đo lường **ROI**, không nên vội vàng chuyển đổi toàn bộ hệ thống.
-- Các công cụ AI như Amazon Q Developer có thể **boost productivity** nếu được tích hợp vào workflow phát triển hiện tại.
-
-#### Một số hình ảnh khi tham gia sự kiện
-* Thêm các hình ảnh của các bạn tại đây
-> Tổng thể, sự kiện không chỉ cung cấp kiến thức kỹ thuật mà còn giúp tôi thay đổi cách tư duy về thiết kế ứng dụng, hiện đại hóa hệ thống và phối hợp hiệu quả hơn giữa các team.
+**Nhìn chung, sự kiện không chỉ cung cấp những cập nhật kỹ thuật quan trọng mà còn giúp tôi định hình lại tư duy về việc mở rộng hạ tầng đám mây, hiện đại hóa ứng dụng cũ và lựa chọn các pattern kiến trúc phù hợp.**
