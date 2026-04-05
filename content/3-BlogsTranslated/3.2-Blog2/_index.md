@@ -33,3 +33,21 @@ Ensure you have access to an AWS account and a set of credentials with administr
 ## 2. Create an AWS Cloud9 environment
 
 Log in to the [AWS Management Console](https://aws.amazon.com/console/) and search for [AWS Cloud9](https://signin.aws.amazon.com/signin?redirect_uri=https%3A%2F%2Fus-east-1.console.aws.amazon.com%2Fcloud9%2Fhome%3Fca-oauth-flow-id%3D9abf%26hashArgs%3D%2523%26isauthcode%3Dtrue%26oauthStart%3D1775422352359%26region%3Dus-east-1%26state%3DhashArgsFromTB_us-east-1_1cdedad3343cbf4c&client_id=arn%3Aaws%3Asignin%3A%3A%3Aconsole%2Fcloud9classicide&forceMobileApp=0&code_challenge=oD_UERZlGRKZgpXNAHXL-71KCoxmqs0aktGEpYTVDag&code_challenge_method=SHA-256) services in the search bar. Select AWS Cloud9 and create an AWS Cloud9 environment in the `us-east-1` region based on Amazon Linux 2.
+
+## Solution
+
+## Configure the AWS Cloud9 environment
+
+Launch the AWS Cloud9 IDE. Close the `Welcome` tab and open a new `Terminal` tab.
+
+![image](https://d2908q01vomqb2.cloudfront.net/fe2ef495a1152561572949784c16bf23abb28057/2021/09/22/springbootapprunner2.png)
+
+## Create and attach an IAM role for your AWS Cloud9 instance
+
+By default, AWS Cloud9 manages temporary IAM credentials for you. Unfortunately, these are incompatible with Terraform. To get around this, you need to disable AWS Cloud9 temporary credentials, and create and attach an IAM role for your AWS Cloud9 instance.
+
+  1. Follow this deep link to create an IAM role with Administrator access.
+  2. Confirm that AWS service and EC2 are selected, then choose Next to view permissions.
+  3. Confirm that AdministratorAccess is checked, then choose Next: Tags to assign tags.
+  4. Take the defaults, and choose Next: Review to review.
+  5. Enter workshop-admin for the Name, and choose Create role.
