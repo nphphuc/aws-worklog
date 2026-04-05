@@ -33,7 +33,7 @@ The platform uses a Serverless architecture with a clear separation between the 
 <!-- ![IoT Weather Station Architecture](/images/2-Proposal/edge_architecture.jpeg)
 
 ![IoT Weather Platform Architecture](/images/2-Proposal/platform_architecture.jpeg) -->
-![SmartHire architecture](https://media.discordapp.net/attachments/1227176240364916788/1490414725475995648/smarthire_architecture.png?ex=69d3f861&is=69d2a6e1&hm=5fdaaae6eef0fb29c5561374c1052eb8cbf27b81aea73857db2585141d92b643&=&format=webp&quality=lossless&width=1376&height=796)
+![SmartHire architecture](https://res.cloudinary.com/diahbkjog/image/upload/v1775413223/smarthire_architecture_cugoh4.png)
 
 ### AWS Services Used
 <!-- - **AWS IoT Core**: Ingests MQTT data from 5 stations, scalable to 15.
