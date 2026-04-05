@@ -6,121 +6,49 @@ chapter: false
 pre: " <b> 4.1. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy it verbatim** into your report, including this warning.
-{{% /notice %}}
+# Events Participated: Summary Reports
 
-# Summary Report: “GenAI-powered App-DB Modernization workshop”
+---
+
+## Summary Report: “AWS re:Invent Recap HCMC”
 
 ### Event Objectives
-
-- Share best practices in modern application design
-- Introduce Domain-Driven Design (DDD) and event-driven architecture
-- Provide guidance on selecting the right compute services
-- Present AI tools to support the development lifecycle
-
-### Speakers
-
-- **Jignesh Shah** – Director, Open Source Databases
-- **Erica Liu** – Sr. GTM Specialist, AppMod
-- **Fabrianne Effendi** – Assc. Specialist SA, Serverless Amazon Web Services
+* Deep dive into the latest product releases, service updates, and architectural best practices directly from AWS re:Invent.
+* Provide technical sessions focusing on infrastructure scaling, application modernization, and cloud security.
+* Help builders and technical leaders explore strategies to upgrade legacy systems using modern cloud-native tools.
+* Foster meaningful connections and networking within the local community of cloud engineers and architects.
 
 ### Key Highlights
-
-#### Identifying the drawbacks of legacy application architecture
-
-- Long product release cycles → Lost revenue/missed opportunities  
-- Inefficient operations → Reduced productivity, higher costs  
-- Non-compliance with security regulations → Security breaches, loss of reputation  
-
-#### Transitioning to modern application architecture – Microservices
-
-Migrating to a modular system — each function is an **independent service** communicating via **events**, built on three core pillars:
-
-- **Queue Management**: Handle asynchronous tasks  
-- **Caching Strategy**: Optimize performance  
-- **Message Handling**: Flexible inter-service communication  
-
-#### Domain-Driven Design (DDD)
-
-- **Four-step method**: Identify domain events → arrange timeline → identify actors → define bounded contexts  
-- **Bookstore case study**: Demonstrates real-world DDD application  
-- **Context mapping**: 7 patterns for integrating bounded contexts  
-
-#### Event-Driven Architecture
-
-- **3 integration patterns**: Publish/Subscribe, Point-to-point, Streaming  
-- **Benefits**: Loose coupling, scalability, resilience  
-- **Sync vs async comparison**: Understanding the trade-offs  
-
-#### Compute Evolution
-
-- **Shared Responsibility Model**: EC2 → ECS → Fargate → Lambda  
-- **Serverless benefits**: No server management, auto-scaling, pay-for-value  
-- **Functions vs Containers**: Criteria for appropriate choice  
-
-#### Amazon Q Developer
-
-- **SDLC automation**: From planning to maintenance  
-- **Code transformation**: Java upgrade, .NET modernization  
-- **AWS Transform agents**: VMware, Mainframe, .NET migration  
+The event covered a broad spectrum of core AWS updates focused on Infrastructure & Application Modernization (Track 1):
+* **Hybrid & Multi-Cloud Strategy:** Building agile, flexible, and resilient cloud environments that span across different infrastructures.
+* **Containerization Advancements:** Simplifying the deployment, scaling, and management of container-based applications on AWS (ECS, EKS, Fargate).
+* **Purpose-Built Databases:** Moving away from monolithic relational databases by optimizing workloads and selecting the right database for the right job (NoSQL, Graph, Time-Series).
+* **AI-Powered Modernization:** Exploring tools like AWS Transform and Kiro to automatically upgrade and refactor legacy system codebases.
+* **Cloud Security:** Enhancing system protection with intelligent, automated threat detections and compliance frameworks.
+* **Local Infrastructure:** Announcement of the new Vietnam DirectConnect POP to significantly improve local latency and secure connectivity for Vietnamese businesses.
 
 ### Key Takeaways
-
-#### Design Mindset
-
-- **Business-first approach**: Always start from the business domain, not the technology  
-- **Ubiquitous language**: Importance of a shared vocabulary between business and tech teams  
-- **Bounded contexts**: Identifying and managing complexity in large systems  
-
-#### Technical Architecture
-
-- **Event storming technique**: Practical method for modeling business processes  
-- Use **event-driven communication** instead of synchronous calls  
-- **Integration patterns**: When to use sync, async, pub/sub, streaming  
-- **Compute spectrum**: Criteria for choosing between VM, containers, and serverless  
-
-#### Modernization Strategy
-
-- **Phased approach**: No rushing — follow a clear roadmap  
-- **7Rs framework**: Multiple modernization paths depending on the application  
-- **ROI measurement**: Cost reduction + business agility  
+* **Design Mindset**
+    * **Right Tool for the Right Job:** Stop forcing all data into relational databases; adopt purpose-built databases based on specific application access patterns.
+    * **Agility & Flexibility:** Modern architectures must be designed to scale dynamically and survive unexpected traffic spikes using containerization and serverless patterns.
+* **Technical Architecture**
+    * **Decoupled Systems:** Utilizing containers heavily to ensure that applications remain portable and easy to manage across hybrid environments.
+* **Modernization Strategy**
+    * **AI-Assisted Refactoring:** Adopting AI tools (like AWS Transform) is now a core part of the application modernization lifecycle, drastically reducing the time needed to upgrade legacy code.
 
 ### Applying to Work
-
-- **Apply DDD** to current projects: Event storming sessions with business teams  
-- **Refactor microservices**: Use bounded contexts to define service boundaries  
-- **Implement event-driven patterns**: Replace some sync calls with async messaging  
-- **Adopt serverless**: Pilot AWS Lambda for suitable use cases  
-- **Try Amazon Q Developer**: Integrate into the dev workflow to boost productivity  
+* **Optimize Database Usage:** Review the current architecture of our projects to ensure we are leveraging purpose-built databases rather than relying on a one-size-fits-all approach.
+* **Enhance Container Pipelines:** Apply the latest best practices for EKS and ECS to improve our CI/CD deployment efficiency.
+* **Evaluate DirectConnect:** Assess how the new Vietnam DirectConnect POP might reduce latency for our local users and backend services.
 
 ### Event Experience
+Attending the **“AWS re:Invent Recap HCMC”** was extremely valuable, as it brought the massive scale and cutting-edge announcements of the global conference directly to the local community. Key experiences included:
+* **Learning from industry experts:** Gained a broader perspective on how global companies are architecting their infrastructures for extreme scale.
+* **Deep technical exposure:** The focus on purpose-built databases and AI-assisted code transformation provided practical insights into solving technical debt.
+* **Networking and discussions:** The event offered excellent opportunities to exchange ideas with local cloud enthusiasts and AWS architects, reinforcing the importance of community in the tech industry.
+* **Lessons learned:** The modernization journey is continuous. Leveraging AI not just for features, but to refactor and secure the underlying infrastructure itself, is the new standard.
 
-Attending the **“GenAI-powered App-DB Modernization”** workshop was extremely valuable, giving me a comprehensive view of modernizing applications and databases using advanced methods and tools. Key experiences included:
+### Some event photos
+*[Add your event photos here]*
 
-#### Learning from highly skilled speakers
-- Experts from AWS and major tech organizations shared **best practices** in modern application design.  
-- Through real-world case studies, I gained a deeper understanding of applying **DDD** and **Event-Driven Architecture** to large projects.  
-
-#### Hands-on technical exposure
-- Participating in **event storming** sessions helped me visualize how to **model business processes** into domain events.  
-- Learned how to **split microservices** and define **bounded contexts** to manage large-system complexity.  
-- Understood trade-offs between **synchronous and asynchronous communication** and integration patterns like **pub/sub, point-to-point, streaming**.  
-
-#### Leveraging modern tools
-- Explored **Amazon Q Developer**, an AI tool for SDLC support from planning to maintenance.  
-- Learned to **automate code transformation** and pilot serverless with **AWS Lambda** to improve productivity.  
-
-#### Networking and discussions
-- The workshop offered opportunities to exchange ideas with experts, peers, and business teams, enhancing the **ubiquitous language** between business and tech.  
-- Real-world examples reinforced the importance of the **business-first approach** rather than focusing solely on technology.  
-
-#### Lessons learned
-- Applying DDD and event-driven patterns reduces **coupling** while improving **scalability** and **resilience**.  
-- Modernization requires a **phased approach** with **ROI measurement**; rushing the process can be risky.  
-- AI tools like Amazon Q Developer can significantly **boost productivity** when integrated into the current workflow.  
-
-#### Some event photos
-*Add your event photos here*  
-
-> Overall, the event not only provided technical knowledge but also helped me reshape my thinking about application design, system modernization, and cross-team collaboration.
+**Overall, the event not only provided critical technical updates but also helped me reshape my thinking about scaling cloud infrastructure, modernizing legacy apps, and choosing the right architectural patterns.**
