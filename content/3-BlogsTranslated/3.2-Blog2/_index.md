@@ -32,7 +32,7 @@ Ensure you have access to an AWS account and a set of credentials with administr
 
 ## 2. Create an AWS Cloud9 environment
 
-Log in to the [AWS Management Console](https://aws.amazon.com/console/) and search for [AWS Cloud9](https://signin.aws.amazon.com/signin?redirect_uri=https%3A%2F%2Fus-east-1.console.aws.amazon.com%2Fcloud9%2Fhome%3Fca-oauth-flow-id%3D9abf%26hashArgs%3D%2523%26isauthcode%3Dtrue%26oauthStart%3D1775422352359%26region%3Dus-east-1%26state%3DhashArgsFromTB_us-east-1_1cdedad3343cbf4c&client_id=arn%3Aaws%3Asignin%3A%3A%3Aconsole%2Fcloud9classicide&forceMobileApp=0&code_challenge=oD_UERZlGRKZgpXNAHXL-71KCoxmqs0aktGEpYTVDag&code_challenge_method=SHA-256) services in the search bar. Select AWS Cloud9 and create an AWS Cloud9 environment in the `us-east-1` region based on Amazon Linux 2.
+Log in to the [AWS Management Console](https://aws.amazon.com/console/) and search for [AWS Cloud9](https://console.aws.amazon.com/cloud9/home?region=us-east-1) services in the search bar. Select AWS Cloud9 and create an AWS Cloud9 environment in the `us-east-1` region based on Amazon Linux 2.
 
 ## Solution
 
@@ -46,8 +46,40 @@ Launch the AWS Cloud9 IDE. Close the `Welcome` tab and open a new `Terminal` tab
 
 By default, AWS Cloud9 manages temporary IAM credentials for you. Unfortunately, these are incompatible with Terraform. To get around this, you need to disable AWS Cloud9 temporary credentials, and create and attach an IAM role for your AWS Cloud9 instance.
 
-  1. Follow this deep link to create an IAM role with Administrator access.
-  2. Confirm that AWS service and EC2 are selected, then choose Next to view permissions.
-  3. Confirm that AdministratorAccess is checked, then choose Next: Tags to assign tags.
-  4. Take the defaults, and choose Next: Review to review.
-  5. Enter workshop-admin for the Name, and choose Create role.
+  1. Follow [this deep link to create an IAM role with Administrator access.](https://console.aws.amazon.com/iam/home#/roles$new?step=review&commonUseCase=EC2%2BEC2&selectedUseCase=EC2&policies=arn:aws:iam::aws:policy%2FAdministratorAccess)
+  2. Confirm that AWS service and EC2 are selected, then choose **Next** to view permissions.
+  3. Confirm that AdministratorAccess is checked, then choose **Next: Tags** to assign tags.
+  4. Take the defaults, and choose **Next: Review** to review.
+  5. Enter workshop-admin for the Name, and choose **Create role**.
+
+  ![image](https://d2908q01vomqb2.cloudfront.net/fe2ef495a1152561572949784c16bf23abb28057/2021/09/22/springbootapprunner3.png)
+
+  6. Follow [this deep link to find your AWS Cloud9 EC2 instance.](https://console.aws.amazon.com/ec2/v2/home#Instances:tag:Name=aws-cloud9-;sort=desc:launchTime)
+  7. Select the instance, then choose **Actions / Instance settings / Modify IAM role**. Note: If you cannot find this menu option, look under **Actions / Security / Modify IAM role**
+
+  ![image](https://d2908q01vomqb2.cloudfront.net/fe2ef495a1152561572949784c16bf23abb28057/2021/09/22/springbootapprunner4.png)
+
+  8. Choose workshop-admin from the IAM role drop-down, and select **Apply**.
+
+  ![image](https://d2908q01vomqb2.cloudfront.net/fe2ef495a1152561572949784c16bf23abb28057/2021/09/22/springbootapprunner5.png)
+
+  9. Return to your workspace and click the gear icon (in top right corner), or click to open a new tab and choose **Open preferences**.
+  10. Select **AWS settings**.
+  11. Turn off AWS managed temporary credentials.
+  12. Close the Preferences tab.
+
+  ![image](https://d2908q01vomqb2.cloudfront.net/fe2ef495a1152561572949784c16bf23abb28057/2021/09/22/springbootapprunner6.png)
+
+  13. In the AWS Cloud9 terminal pane, execute the command:
+
+  ```
+  rm -vf ${HOME}/.aws/credentials
+  ```
+
+  14. As a final check, use the [GetCallerIdentity](https://docs.aws.amazon.com/cli/latest/reference/sts/get-caller-identity.html) CLI command to validate that the AWS Cloud9 IDE is using the correct IAM role.
+
+  ```
+  aws sts get-caller-identity --query Arn | grep workshop-admin -q && echo "IAM role valid" || echo "IAM role NOT valid"
+  ```
+
+  ## Upgrade awscli
