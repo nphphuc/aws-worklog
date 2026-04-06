@@ -12,17 +12,20 @@ pre: " <b> 1.4. </b> "
 
 ### Week 4 Objectives:
 
-* Connect and get acquainted with members of First Cloud Journey.
-* Understand basic AWS services, how to use the console & CLI.
+* Explore Amazon Lightsail for simplified VM and networking setup.
+* Deploy containerized apps using Amazon Lightsail Containers and manage images.
+* Design and configure EC2 Auto Scaling groups to scale applications automatically.
+* Monitor resources and set alarms using Amazon CloudWatch metrics and logs.
+* Configure DNS routing and hybrid DNS scenarios using Amazon Route 53.
 
 ### Tasks to be carried out this week:
 | Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
 | --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 2   | Khám phá Amazon Lightsail: tạo instance, kiểm tra networking và snapshot.                                                                                                                           | 08/11/2025 | 08/11/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 3   | Triển khai ứng dụng container bằng Lightsail Containers; quản lý image và deployment.                                                                                                               | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 4   | Thiết kế và cấu hình EC2 Auto Scaling group (launch template/LC) cho ứng dụng demo.                                                                                                                 | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 5   | Cấu hình Amazon CloudWatch: bật metrics, tạo log group và thiết lập alarm cơ bản.                                                                                                                    | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 6   | Thiết lập Route 53 record để routing; thử scenario DNS hybrid nếu có tài nguyên on-prem/placeholder.                                                                                                 | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
 
 
 ### Week 4 Achievements:

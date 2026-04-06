@@ -8,17 +8,21 @@ pre: " <b> 1.2. </b> "
 
 ### Week 2 Objectives:
 
-* Connect and get acquainted with members of First Cloud Journey.
-* Understand basic AWS services, how to use the console & CLI.
+* Create and configure a new AWS account and verify Free Tier eligibility.
+* Set up AWS Budgets and alerts to monitor and manage costs.
+* Understand AWS Support options and how to open support cases.
+* Configure IAM users, groups, roles and basic policies for least-privilege access.
+* Learn core VPC concepts and create a simple VPC with subnets and routing.
 
 ### Tasks to be carried out this week:
 | Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
 | --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Create AWS account <br> - Create IAM Group/Role and IAM User | 08/11/2025 | 08/11/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 3   | | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 2   | Tạo & cấu hình tài khoản AWS Free Tier; xác minh Free Tier eligibility.                                                                                                                                 | 12/01/2026 | 12/01/2026      | <https://cloudjourney.awsstudygroup.com/> |
+| 3   | Cấu hình AWS Budgets và cảnh báo; tạo ngân sách thử nghiệm.                                                                                                                                            | 13/01/2025 | 13/01/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 4   | Nghiên cứu AWS Support; thử mở support case mẫu. Cấu hình IAM users/groups cơ bản.                                                                                                                    | 14/01/2025 | 14/01/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 5   | Tạo IAM roles và policies theo nguyên tắc least-privilege; cấu hình AWS CLI (Access Key/Secret).                                                                                                       | 15/01/2025 | 15/01/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 6   | Tạo VPC đơn giản với subnets và routing; kiểm tra kết nối giữa subnet và Internet/Gateway.                                                                                                            | 16/01/2025 | 16/01/2025      | <https://cloudjourney.awsstudygroup.com/> |
+
 
 
 ### Week 2 Achievements:

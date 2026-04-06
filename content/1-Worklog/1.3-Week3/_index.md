@@ -12,17 +12,20 @@ pre: " <b> 1.3. </b> "
 
 ### Week 3 Objectives:
 
-* Connect and get acquainted with members of First Cloud Journey.
-* Understand basic AWS services, how to use the console & CLI.
+* Launch and manage EC2 instances: choose instance types, AMIs, EBS and SSH access.
+* Create and attach IAM roles for EC2 instances and understand instance profiles.
+* Use AWS Cloud9 for cloud-based development, testing and quick prototyping.
+* Configure Amazon S3 for static website hosting and basic bucket policies.
+* Deploy and connect to an Amazon RDS instance; understand engines, backups and security groups.
 
 ### Tasks to be carried out this week:
 | Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
 | --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 2   | Launch EC2 instance (t2.micro), tạo key pair và kết nối SSH để kiểm tra AMI/EBS.                                                                                                                     | 19/01/2026 | 19/01/2026      | <https://cloudjourney.awsstudygroup.com/> |
+| 3   | Tạo và attach IAM role cho EC2 (instance profile); kiểm tra quyền truy cập tài nguyên.                                                                                                               | 20/01/2026 | 20/01/2026      | <https://cloudjourney.awsstudygroup.com/> |
+| 4   | Thiết lập AWS Cloud9 workspace; triển khai và chạy prototype nhỏ trong Cloud9.                                                                                                                        | 21/01/2026 | 21/01/2026      | <https://cloudjourney.awsstudygroup.com/> |
+| 5   | Tạo S3 bucket cho static website; cấu hình hosting và bucket policy cơ bản.                                                                                                                           | 22/01/2026 | 22/01/2026      | <https://cloudjourney.awsstudygroup.com/> |
+| 6   | Provision RDS (ví dụ MySQL), cấu hình security group, backup và thử kết nối từ EC2/Cloud9.                                                                                                            | 23/01/2026 | 23/01/2026      | <https://cloudjourney.awsstudygroup.com/> |
 
 
 ### Week 3 Achievements:

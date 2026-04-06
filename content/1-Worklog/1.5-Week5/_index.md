@@ -12,17 +12,20 @@ pre: " <b> 1.5. </b> "
 
 ### Week 5 Objectives:
 
-* Connect and get acquainted with members of First Cloud Journey.
-* Understand basic AWS services, how to use the console & CLI.
+* Perform common automation and management tasks using the AWS CLI.
+* Design NoSQL data models and operate Amazon DynamoDB tables (capacity, indexes, queries).
+* Implement in-memory caching patterns with Amazon ElastiCache (Redis/Memcached).
+* Apply advanced networking topics in the "Networking on AWS" workshop (VPC peering, endpoints).
+* Configure Amazon CloudFront distributions to accelerate content delivery and caching.
 
 ### Tasks to be carried out this week:
 | Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
 | --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 2   | Viết script tự động hóa với AWS CLI (create/list/describe) cho workflow cơ bản.                                                                                                                     | 08/11/2025 | 08/11/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 3   | Thiết kế mô hình NoSQL và tạo bảng DynamoDB; thử capacity, index và queries cơ bản.                                                                                                                  | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 4   | Triển khai Amazon ElastiCache (Redis), kiểm thử pattern caching cho ứng dụng demo.                                                                                                                   | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 5   | Thực hành networking nâng cao: VPC peering và tạo Endpoint (Interface/Private) cho dịch vụ cần thiết.                                                                                                 | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 6   | Thiết lập CloudFront distribution cho S3 static site; kiểm tra behavior và invalidation.                                                                                                              | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
 
 
 ### Week 5 Achievements:

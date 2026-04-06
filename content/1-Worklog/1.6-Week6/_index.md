@@ -12,17 +12,19 @@ pre: " <b> 1.6. </b> "
 
 ### Week 6 Objectives:
 
-* Connect and get acquainted with members of First Cloud Journey.
-* Understand basic AWS services, how to use the console & CLI.
+* Implement edge computing patterns using Amazon CloudFront and Lambda@Edge.
+* Plan and deploy Windows-based workloads on AWS with appropriate sizing and licensing considerations.
+* Configure AWS Managed Microsoft AD and integrate it with Windows instances and directory-aware apps.
+* Design and build highly available web applications using load balancing, multi-AZ deployments and fault-tolerant architectures.
 
 ### Tasks to be carried out this week:
 | Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
 | --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 2   | Thử nghiệm Lambda@Edge với CloudFront (ví dụ rewrite header hoặc redirect nhẹ).                                                                                                                    | 08/11/2025 | 08/11/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 3   | Lên kế hoạch và sizing cho workloads Windows trên AWS; thử deploy instance Windows mẫu.                                                                                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 4   | Cấu hình AWS Managed Microsoft AD; thử join Windows instance vào domain và kiểm tra tích hợp.                                                                                                       | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 5   | Thiết kế kiến trúc web app highly-available: ELB, multi-AZ deployment và test failover.                                                                                                               | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 6   | Triển khai mẫu HA: ELB + Auto Scaling + multi-AZ; kiểm tra health checks và tính chịu lỗi.                                                                                                            | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
 
 
 ### Week 6 Achievements:
