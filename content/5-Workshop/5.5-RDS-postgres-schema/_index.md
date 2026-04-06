@@ -1,5 +1,5 @@
 ---
-title : "RDS PostgreSQL Schema"
+title : "RDS Postgres Schema"
 date : 2024-01-01
 weight : 5
 chapter : false
