@@ -46,11 +46,11 @@ Important: schema field is `updatedAt` (not `timestamp`).
 
 #### Content
 
-1. [System Workflows](5.1-Workshop-overview)
-2. [Detailed Data Flows](5.2-Architecture/)
-3. [Data Models & Entity Relationships](5.3-Candidate-Path/)
-4. [Optimized Component Architecture](5.4-Recruiter-Path/)
-5. [RDS PostgreSQL Schema](5.5-Technology-Stack/)
-6. [DynamoDB Schema](5.6-Repository-Layout/)
+1. [System Workflows](5.1-System-workflows/)
+2. [Detailed Data Flows](5.2-Detailed-data-flows/)
+3. [Data Models & Entity Relationships](5.3-Data-models-entity-relationships/)
+4. [Optimized Component Architecture](5.4-Optimized-component-architecture/)
+5. [RDS Postgres Schema](5.5-RDS-postgres-schema/)
+6. [DynamoDB Schema](5.6-DynamoDB-schema/)
 7. [Infrastructure Components](5.7-Infrastructure-components/)
 8. [Observability & Monitoring](5.8-Observability-monitoring/)
