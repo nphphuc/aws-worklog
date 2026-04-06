@@ -6,13 +6,51 @@ chapter : false
 pre : " <b> 5.1. </b> "
 ---
 
-#### VPC endpoints
-+ **VPC endpoints** are virtual devices. They are horizontally scaled, redundant, and highly available VPC components. They allow communication between your compute resources and AWS services without imposing availability risks.
-+ Compute resources running in VPC can access  **Amazon S3**  using a Gateway endpoint. PrivateLink interface endpoints can be used by compute resources running in VPC or on-premises.
+#### SmartHire-AI Overview
 
-#### Workshop overview
-In this workshop, you will use two VPCs. 
-+ **"VPC Cloud"** is for cloud resources such as a  **Gateway endpoint** and an EC2 instance to test with. 
-+ **"VPC On-Prem"** simulates an on-premises environment such as a factory or corporate datacenter. An EC2 instance running strongSwan VPN software has been deployed in "VPC On-prem" and automatically configured to establish a Site-to-Site VPN tunnel with AWS Transit Gateway. This VPN simulates connectivity from an on-premises location to the AWS cloud. To minimize costs, only one VPN instance is provisioned to support this workshop. When planning VPN connectivity for your production workloads, AWS recommends using multiple VPN devices for high availability.
+**SmartHire-AI** is an end-to-end intelligent hiring platform that uses AWS services and AI to match candidates with job opportunities. The system operates as a web application built with **React (Vite)** that runs behind **Amazon CloudFront** and **S3**, with **Amazon Cognito** for authentication.
 
-![overview](/images/5-Workshop/5.1-Workshop-overview/diagram1.png)
+#### How It Works
+
+##### For Candidates
+- Sign in to the platform via Cognito (supports Google federation)
+- Upload a **PDF resume** to Amazon S3
+- Receive **personalized job suggestions** based on CV analysis
+- View real-time updates as the pipeline processes their CV through AWS AppSync GraphQL subscriptions
+
+##### For Recruiters
+- Create and manage **job postings** stored in a relational database (RDS PostgreSQL)
+- When a job is created/updated, the backend automatically starts processing
+- View **ranked candidates** on their dashboard
+- Receive real-time updates as candidates apply via AppSync subscriptions
+
+#### Key Architecture Highlights
+
+🟢 **Frontend**: React SPA served via S3 + CloudFront with Cognito sign-in over JWT
+
+🟢 **API**: .NET 8 Lambda functions behind API Gateway with Cognito authorization
+
+🟢 **CV Processing Pipeline**: Serverless orchestration with:
+- **AWS Step Functions** for workflow management
+- **AWS Lambda** (Python) for document processing
+- **Amazon Textract** for PDF text extraction
+- **Amazon Bedrock** for AI-powered enrichment
+- **Amazon Comprehend** for text analysis
+- **AWS SQS** for job queuing
+- **Amazon RDS (PostgreSQL)** for structured data
+- **Amazon DynamoDB** for tracking
+
+🟢 **Real-time Updates**: AWS AppSync for GraphQL subscriptions pushing results to UI instantly
+
+🟢 **Infrastructure as Code**: Terraform for AWS resources, AWS SAM for serverless API
+
+---
+
+#### Workshop Structure
+
+In this workshop, you will learn:
+1. **Architecture** - Deep dive into components and data flows
+2. **Candidate Path** - How CV uploads are processed end-to-end
+3. **Recruiter Path** - How job postings trigger intelligent matching
+4. **Technology Stack** - All AWS services and tools used
+5. **Repository Layout** - Project structure and deployment

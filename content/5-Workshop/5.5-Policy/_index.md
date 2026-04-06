@@ -1,99 +1,276 @@
 ---
-title : "VPC Endpoint Policies"
+title : "Technology Stack"
 date : 2024-01-01
 weight : 5
 chapter : false
 pre : " <b> 5.5. </b> "
 ---
 
-When you create an interface or gateway endpoint, you can attach an endpoint policy to it that controls access to the service to which you are connecting. A VPC endpoint policy is an IAM resource policy that you attach to an endpoint. If you do not attach a policy when you create an endpoint, AWS attaches a default policy for you that allows full access to the service through the endpoint.
+#### SmartHire-AI Technology Stack
 
-You can create a policy that restricts access to specific S3 buckets only. This is useful if you only want certain S3 Buckets to be accessible through the endpoint.
+SmartHire-AI is built on a modern, serverless architecture using AWS services and open-source technologies. Below is a comprehensive breakdown of all technologies used.
 
-In this section you will create a VPC endpoint policy that restricts access to the S3 bucket specified in the VPC endpoint policy.
+---
 
-![endpoint diagram](/images/5-Workshop/5.5-Policy/s3-bucket-policy.png)
+#### Frontend Technologies
 
-#### Connect to an EC2 instance and verify connectivity to S3
+| Technology | Purpose | Version |
+|-----------|---------|---------|
+| **React** | UI component framework | Latest |
+| **Vite** | Module bundler & dev server | v3+ |
+| **TypeScript** | Type-safe JavaScript | v4.9+ |
+| **AWS Amplify UI** | Pre-built AWS UI components | Latest |
+| **Tailwind CSS** | Utility-first CSS framework | v3+ |
+| **Apollo Client** | GraphQL client for AppSync | v3+ |
 
-1. Start a new AWS Session Manager session on the instance named Test-Gateway-Endpoint. From the session, verify that you can list the contents of the bucket you created in Part 1: Access S3 from VPC:
+**Hosting:**
+- **Amazon S3**: Static website hosting
+- **Amazon CloudFront**: CDN with edge caching
+- **AWS Certificate Manager (ACM)**: HTTPS/TLS certificates
 
+---
+
+#### Authentication & Authorization
+
+| Technology | Purpose |
+|-----------|---------|
+| **Amazon Cognito** | User pools, sign-in, sign-up, federation |
+| **Cognito + Google OAuth** | Social login integration |
+| **JWT Tokens** | Stateless API authorization |
+| **AWS IAM** | Role-based access control (RBAC) |
+
+**Flow:**
 ```
-aws s3 ls s3://\<your-bucket-name\>
+User Login → Cognito → Generate JWT → Store in localStorage
+API Call → Pass JWT header → API Gateway validates → Route to Lambda
 ```
-![test](/images/5-Workshop/5.5-Policy/test1.png)
 
-The bucket contents include the two 1 GB files uploaded in earlier.
+---
 
-2. Create a new S3 bucket; follow the naming pattern you used in Part 1, but add a '-2' to the name. Leave other fields as default and click create
+#### Backend API
 
-![create bucket](/images/5-Workshop/5.5-Policy/create-bucket.png)
+| Technology | Purpose | Details |
+|-----------|---------|---------|
+| **AWS API Gateway** | HTTP API | REST endpoints, CORS, request throttling |
+| **AWS Lambda** | Serverless compute | .NET 8 runtime, 15-minute timeout |
+| **.NET 8** | API language/framework | C#, NuGet packages, Entity Framework |
+| **AWS RDS** | Relational database | PostgreSQL 14+, Multi-AZ, backups |
+| **Amazon Secrets Manager** | Secure credential storage | DB password rotation |
 
-Successfully create bucket
-
-![Success](/images/5-Workshop/5.5-Policy/create-bucket-success.png)
-
-3. Navigate to: Services > VPC > Endpoints, then select the Gateway VPC endpoint you created earlier. Click the Policy tab. Click Edit policy.
-
-![policy](/images/5-Workshop/5.5-Policy/policy1.png)
-
-The default policy allows access to all S3 Buckets through the VPC endpoint.
-
-4. In Edit Policy console, copy & Paste the following policy, then replace yourbucketname-2 with your 2nd bucket name. This policy will allow access through the VPC endpoint to your new bucket, but not any other bucket in Amazon S3. Click Save to apply the policy.
-
+**API Endpoints:**
 ```
-{
-  "Id": "Policy1631305502445",
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Sid": "Stmt1631305501021",
-      "Action": "s3:*",
-      "Effect": "Allow",
-      "Resource": [
-      				"arn:aws:s3:::yourbucketname-2",
-       				"arn:aws:s3:::yourbucketname-2/*"
-       ],
-      "Principal": "*"
-    }
-  ]
+POST   /jobs              → Create job
+GET    /jobs/{id}         → Get job details
+PUT    /jobs/{id}         → Update job
+POST   /candidates        → Register candidate
+GET    /candidates/{id}   → Get candidate profile
+```
+
+---
+
+#### Document Processing & AI
+
+| Technology | Purpose |
+|-----------|---------|
+| **Amazon Textract** | Extract text from PDFs + OCR |
+| **Amazon Comprehend** | NLP: entity recognition, key phrases |
+| **Amazon Bedrock** | LLM access (Claude, Llama) for enrichment |
+| **LangChain** | LLM orchestration (optional) |
+
+---
+
+#### Serverless Orchestration & Processing
+
+| Technology | Purpose | Details |
+|-----------|---------|---------|
+| **AWS Step Functions** | Workflow orchestration | State machine, error handling, retries |
+| **AWS Lambda** | Serverless functions | Python 3.12, 15-minute max duration |
+| **Amazon ECR** | Container registry | Docker images for complex processing |
+| **AWS SQS** | Message queue | FIFO queue for CV processing, DLQ |
+| **Amazon SNS** | Notifications | Alerts, email notifications |
+
+**Processing Languages:**
+- **Python 3.12**: Data processing, ML libraries (pandas, numpy, scikit-learn)
+- **Node.js 18** (optional): Alternative Lambda runtime for specific tasks
+
+---
+
+#### Real-time Data
+
+| Technology | Purpose |
+|-----------|---------|
+| **AWS AppSync** | Managed GraphQL API |
+| **GraphQL Subscriptions** | WebSocket-based real-time updates |
+| **AppSync Data Sources** | Lambda, RDS, DynamoDB resolvers |
+
+**GraphQL Schema Example:**
+```graphql
+type Query {
+  getJobSuggestions(candidateId: ID!): [Job]!
+  getCandidateRankings(jobId: ID!): [Candidate]!
+}
+
+type Subscription {
+  onJobSuggestionsReady(candidateId: ID!): JobSuggestions
+  onCandidateRankingReady(jobId: ID!): CandidateRanking
 }
 ```
 
-![custom policy](/images/5-Workshop/5.5-Policy/policy2.png)
+---
 
-Successfully customize policy
+#### Data Storage
 
-![success](/static/images/5-Workshop/5.5-Policy/success.png)
+| Technology | Purpose | Data Type |
+|-----------|---------|-----------|
+| **Amazon RDS (PostgreSQL)** | Relational data | Users, jobs, candidates, matches |
+| **Amazon DynamoDB** | NoSQL, real-time tracking | Match scores, processing status |
+| **Amazon S3** | Object storage | CVs (PDFs), images, logs |
+| **Amazon ElastiCache (optional)** | In-memory cache | Job/candidate embeddings cache |
 
-5. From your session on the Test-Gateway-Endpoint instance, test access to the S3 bucket you created in Part 1: Access S3 from VPC
+**Data Flow:**
 ```
-aws s3 ls s3://<yourbucketname>
+Write → RDS (primary source of truth)
+Cache → DynamoDB (fast queries for rankings)
+Files → S3 (PDFs, documents)
+Search → ElastiCache (embedding lookups)
 ```
 
-This command will return an error because access to this bucket is not permitted by your new VPC endpoint policy:
+---
 
-![error](/static/images/5-Workshop/5.5-Policy/error.png)
+#### Infrastructure as Code
 
-6. Return to your home directory on your EC2 instance ` cd~ `
+| Technology | Purpose |
+|-----------|---------|
+| **HashiCorp Terraform** | Infrastructure provisioning |
+| **AWS SAM (Serverless Application Model)** | Lambda + API Gateway template |
+| **AWS CloudFormation** | Stack management |
 
-+ Create a file ```fallocate -l 1G test-bucket2.xyz ```
-+ Copy file to 2nd bucket ```aws s3 cp test-bucket2.xyz s3://<your-2nd-bucket-name>```
+**Modules:**
+```
+iac/terraform/
+├── vpc/              → VPC, subnets, security groups
+├── rds/              → PostgreSQL database
+├── cognito/          → User pool, identity provider
+├── s3/               → Buckets, policies
+├── lambda/           → Execution roles, permissions
+├── step-functions/   → State machine definitions
+├── appsync/          → GraphQL API
+└── ci-cd/            → CodePipeline, CodeBuild
+```
 
-![success](/static/images/5-Workshop/5.5-Policy/test2.png)
+---
 
-This operation succeeds because it is permitted by the VPC endpoint policy.
+#### CI/CD & Deployment
 
-![success](/static/images/5-Workshop/5.5-Policy/test2-success.png)
+| Technology | Purpose |
+|-----------|---------|
+| **AWS CodePipeline** | Orchestrates build & deploy stages |
+| **AWS CodeBuild** | Builds Docker images, runs tests |
+| **GitHub (CodeStar Connection)** | Source repository |
+| **GitHub Actions** | Local CI/CD (alternative to CodePipeline) |
 
-+ Then we test access to the first bucket by copy the file to 1st bucket `aws s3 cp test-bucket2.xyz s3://<your-1st-bucket-name>`
+**Pipeline Stages:**
+```
+1. Source (GitHub commit)
+   ↓
+2. Build (CodeBuild)
+   - npm install (frontend)
+   - npm run build (frontend)
+   - dotnet build (backend)
+   - docker build (processing functions)
+   ↓
+3. Deploy (CloudFormation + SAM)
+   - Update Lambda functions
+   - Update container images in ECR
+   - Deploy frontend to S3/CloudFront
+   ↓
+4. Test (automated smoke tests)
+```
 
-![fail](/static/images/5-Workshop/5.5-Policy/test2-fail.png)
+---
 
-This command will return an error because access to this bucket is not permitted by your new VPC endpoint policy.
+#### Observability & Monitoring
 
-#### Part 3 Summary:
+| Technology | Purpose |
+|-----------|---------|
+| **Amazon CloudWatch** | Logs, metrics, dashboards |
+| **CloudWatch Insights** | Log query and analysis |
+| **X-Ray** | Trace requests across services |
+| **CloudWatch Alarms** | Alerts for anomalies |
+| **Amazon SNS** | Email/SMS notifications |
 
-In this section, you created a VPC endpoint policy for Amazon S3, and used the AWS CLI to test the policy. AWS CLI actions targeted to your original S3 bucket failed because you applied a policy that only allowed access to the second bucket you created. AWS CLI actions targeted for your second bucket succeeded because the policy allowed them. These policies can be useful in situations where you need to control access to resources through VPC endpoints.
+**Key Metrics:**
+- Lambda execution duration
+- Error rates per function
+- SQS queue depth
+- RDS CPU & connection count
+- AppSync subscription count
+- Textract document processing cost
+
+---
+
+#### Security & Compliance
+
+| Technology | Purpose |
+|-----------|---------|
+| **AWS WAF** | Web Application Firewall on CloudFront |
+| **VPC Security Groups** | Network access control |
+| **IAM Policies** | Least privilege access |
+| **KMS** | Encryption key management |
+| **Secrets Manager** | Rotate DB credentials |
+| **VPC Endpoints** | Private access to AWS services |
+
+**Encryption:**
+- At-rest: S3 (SSE-S3/KMS), RDS (enabled)
+- In-transit: HTTPS/TLS on all endpoints
+- Database: Credentials in Secrets Manager
+
+---
+
+#### Optional/Advanced Technologies
+
+| Technology | When to Use |
+|-----------|-----------|
+| **Amazon Bedrock** | Multi-model LLM access (Claude, Llama, Mistral) |
+| **Amazon SageMaker** | Custom ML models for advanced matching |
+| **AWS Glue** | ETL for batch processing, data catalog |
+| **Athena** | SQL queries on S3 data (logs, archives) |
+| **QuickSight** | Business analytics dashboard |
+| **EventBridge** | Event-driven scheduler & integrations |
+
+---
+
+#### Development Tools
+
+| Tool | Purpose |
+|------|---------|
+| **VS Code** | Editor with AWS Toolkit extension |
+| **AWS SAM CLI** | Local testing of serverless functions |
+| **LocalStack** | Local AWS emulation (development) |
+| **Postman** | API testing |
+| **AWS CLI** | Command-line interface |
+| **Git** | Version control |
+
+---
+
+#### Summary: Why This Stack?
+
+✅ **Serverless-First**: Auto-scale, pay-per-use, no server management
+
+✅ **Event-Driven**: Step Functions + Lambda + SQS for async processing
+
+✅ **Real-Time**: AppSync subscriptions push updates instantly
+
+✅ **AI-Ready**: Bedrock, Textract, Comprehend built-in
+
+✅ **Secure**: IAM, KMS, Cognito, WAF layered security
+
+✅ **Cost-Effective**: Pay only for compute used, DynamoDB on-demand scaling
+
+✅ **Scalable**: Multi-region ready, CloudFront edge caching
+
+✅ **Observable**: CloudWatch integrated across all services
+
+✅ **Infrastructure as Code**: Terraform for reproducible deployments
 
 

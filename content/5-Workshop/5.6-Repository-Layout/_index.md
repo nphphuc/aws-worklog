@@ -1,18 +1,18 @@
 ---
-title : "Cấu trúc Kho mã"
+title : "Repository Layout"
 date : 2024-01-01
 weight : 6
 chapter : false
 pre : " <b> 5.6. </b> "
 ---
 
-#### Cấu trúc Kho mã SmartHire-AI
+#### SmartHire-AI Repository Structure
 
-Dự án SmartHire-AI được tổ chức thành các mô-đun logic sử dụng cách tiếp cận monorepo. Bố cục này cho phép các đội làm việc độc lập trên frontend, backend và cơ sở hạ tầng trong khi duy trì các tiêu chuẩn chung.
+The SmartHire-AI project is organized into logical modules using a monorepo approach. This layout enables teams to work independently on frontend, backend, and infrastructure while maintaining shared standards.
 
 ---
 
-#### Cấu trúc Thư mục Cấp cao
+#### High-Level Directory Structure
 
 ```
 smart-hire-ai/
@@ -33,7 +33,7 @@ smart-hire-ai/
 
 #### Frontend Module (`frontend/`)
 
-**React SPA với Vite**
+**React SPA with Vite**
 
 ```
 frontend/
@@ -142,7 +142,7 @@ iac/sam/
 **Docker Compose**
 
 ```yaml
-Bao gồm:
+Includes:
 - PostgreSQL database
 - DynamoDB Local
 - LocalStack (AWS services)
@@ -152,9 +152,9 @@ Bao gồm:
 
 ---
 
-#### Các Files Quan trọng
+#### Important Files
 
-| File | Mục đích |
+| File | Purpose |
 |------|---------|
 | `README.md` | Project overview |
 | `docker-compose.yml` | Local dev environment |
@@ -165,7 +165,7 @@ Bao gồm:
 
 ---
 
-#### Quy trình Triển khai
+#### Deployment Process
 
 **Development:**
 ```bash
@@ -182,30 +182,23 @@ sam deploy
 
 ---
 
-#### Tiếp theo
+#### Next Steps
 
-Bạn đã hoàn thành workshop SmartHire-AI! Bây giờ bạn hiểu:
+You have completed the SmartHire-AI workshop! You now understand:
 
-✅ Kiến trúc serverless trên AWS
+✅ Serverless architecture on AWS
 
-✅ Luồng xử lý CV từ upload đến matching
+✅ CV processing flow from upload to matching
 
-✅ Luồng xếp hạng ứng viên cho công việc
+✅ Candidate ranking flow for jobs
 
-✅ Cách các dịch vụ AWS làm việc cùng nhau
+✅ How AWS services work together
 
-✅ Cấu trúc dự án và quy trình triển khai
+✅ Project structure and deployment process
 
-Để triển khai SmartHire-AI:
-1. Clone repository
-2. Cấu hình AWS credentials
-3. Chạy Terraform để cấp phát cơ sở hạ tầng
-4. Triển khai SAM template cho API
-5. Build và đẩy frontend lên S3
-
-5. Xóa các S3 bucket
-
-+ Mở bảng điều khiển S3
-+ Chọn bucket chúng ta đã tạo cho lab, nhấp chuột và xác nhận là empty. Nhấp Delete và xác nhận delete.
-+ 
-![delete s3](/images/5-Workshop/5.6-Cleanup/delete-s3.png)
+To deploy SmartHire-AI:
+1. Clone the repository
+2. Configure AWS credentials
+3. Run Terraform to provision infrastructure
+4. Deploy SAM template for API
+5. Build and push frontend to S3

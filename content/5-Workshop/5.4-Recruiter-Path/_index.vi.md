@@ -23,7 +23,6 @@ Nhà tuyển dụng điền form:
   - Kỹ năng bắt buộc
   - Vị trí
   - Mức lương
-  - Phòng ban
         ↓
 React SPA gửi yêu cầu POST:
   Authorization: JWT (Cognito token)
@@ -57,11 +56,8 @@ Ngay sau khi lưu công việc vào RDS, hàm Lambda:
    - Chuẩn hóa yêu cầu công việc
    - Tạo embeddings công việc bằng Bedrock
    - Trích xuất kỹ năng kỹ thuật chính
-   - Ước tính mức độ cao cấp
 3. Gọi Step Functions với bối cảnh công việc:
-   - Step Functions phân nhánh khác nhau cho đường dẫn JOB vs CV
-   - Thay vì job_suggestion_engine
-   - Gọi candidate_ranking_engine
+   - Phân nhánh tới candidate_ranking_engine
 ```
 
 ---
@@ -77,7 +73,7 @@ Ngay sau khi lưu công việc vào RDS, hàm Lambda:
      * Tương tự ngữ nghĩa: 40%
      * Kỹ năng trùng khớp chính xác: 40%
      * Căn chỉnh cấp độ kinh nghiệm: 15%
-     * Trùng khớp vị trí/múi giờ: 5%
+     * Trùng khớp vị trí: 5%
 4. Lọc theo ngưỡng tối thiểu (65%)
 5. Sắp xếp theo điểm giảm dần
 6. Giới hạn đến 50 ứng viên hàng đầu
@@ -99,8 +95,7 @@ SK: "RANKING#1#can-555"
 {
   "matchScore": 86.45,
   "candidateId": "can-555",
-  "skills": [...],
-  "rankedAt": timestamp
+  "skills": [...]
 }
 ```
 
@@ -127,7 +122,7 @@ UI được làm mới bằng danh sách ứng viên được xếp hạng
 
 #### Bước 7: Trải nghiệm Dashboard Nhà tuyển dụng
 
-**Trang Chi tiết Publicly Show:**
+**Trang Chi tiết Công việc Hiển thị:**
 - Tiêu đề công việc, mô tả, ngày đăng
 - **Xếp hạng Ứng viên Trực tiếp** (cập nhật thời gian thực):
   - 🏆 Ứng viên hàng đầu với điểm 86
@@ -142,6 +137,19 @@ UI được làm mới bằng danh sách ứng viên được xếp hạng
 
 ---
 
+#### Bước 8: Cập nhật Liên tục
+
+**Khi Ứng viên Mới Ứng tuyển:**
+1. Ứng viên tải lên CV
+2. CV được xử lý
+3. Tự động xếp hạng lại chống tất cả các công việc
+4. Nếu điểm > ngưỡng:
+   - Ứng viên được thêm vào danh sách xếp hạng công việc
+   - Nhà tuyển dụng được thông báo ngay lập tức
+   - Dashboard cập nhật thời gian thực
+
+---
+
 #### Ưu điểm của Pipeline
 
 ✅ Xếp hạng Toàn bộ - Tất cả ứng viên được so sánh với công việc mới
@@ -151,6 +159,3 @@ UI được làm mới bằng danh sách ứng viên được xếp hạng
 ✅ Tự động Retrigger - Khi công việc được cập nhật
 
 ✅ Sắp xếp theo Điểm - Ứng viên tốt nhất xuất hiện trước
-
-
-

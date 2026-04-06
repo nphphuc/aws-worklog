@@ -1,53 +1,155 @@
 ---
-title : "Prerequiste"
+title : "Architecture"
 date : 2024-01-01 
 weight : 2 
 chapter : false
 pre : " <b> 5.2. </b> "
 ---
 
-#### IAM permissions
-Add the following IAM permission policy to your user account to deploy and cleanup this workshop.
+#### SmartHire-AI Architecture Overview
+
+SmartHire-AI leverages a sophisticated AWS serverless architecture that scales automatically based on demand. Below is the complete system design:
+
 ```
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Sid": "VisualEditor0",
-            "Effect": "Allow",
-            "Action": [
-                "cloudformation:*",
-                "cloudwatch:*",
-                "ec2:AcceptTransitGatewayPeeringAttachment",
-                "ec2:AcceptTransitGatewayVpcAttachment",
-                "ec2:AllocateAddress",
-                "ec2:AssociateAddress",
-                "ec2:AssociateIamInstanceProfile",
-                "ec2:AssociateRouteTable",
-                "ec2:AssociateSubnetCidrBlock",
-                "ec2:AssociateTransitGatewayRouteTable",
-                "ec2:AssociateVpcCidrBlock",
-                "ec2:AttachInternetGateway",
-                "ec2:AttachNetworkInterface",
-                "ec2:AttachVolume",
-                "ec2:AttachVpnGateway",
-                "ec2:AuthorizeSecurityGroupEgress",
-                "ec2:AuthorizeSecurityGroupIngress",
-                "ec2:CreateClientVpnEndpoint",
-                "ec2:CreateClientVpnRoute",
-                "ec2:CreateCustomerGateway",
-                "ec2:CreateDhcpOptions",
-                "ec2:CreateFlowLogs",
-                "ec2:CreateInternetGateway",
-                "ec2:CreateLaunchTemplate",
-                "ec2:CreateNetworkAcl",
-                "ec2:CreateNetworkInterface",
-                "ec2:CreateNetworkInterfacePermission",
-                "ec2:CreateRoute",
-                "ec2:CreateRouteTable",
-                "ec2:CreateSecurityGroup",
-                "ec2:CreateSubnet",
-                "ec2:CreateSubnetCidrReservation",
+┌─────────────────────────────────────────────────────────────┐
+│                     WEB TIER (Frontend)                      │
+│  React SPA (Vite) → CloudFront CDN → S3 Static Hosting      │
+│                  + Cognito Authentication                    │
+└─────────────────────────────────────────────────────────────┘
+                            │
+        ┌───────────────────┼───────────────────┐
+        │                   │                   │
+┌───────▼──────┐  ┌─────────▼────────┐  ┌──────▼──────────┐
+│  API Layer   │  │  Stream Layer    │  │  Data Layer    │
+│              │  │                  │  │                 │
+│ API Gateway  │  │   AWS AppSync    │  │ RDS PostgreSQL │
+│ → Lambda     │  │   (GraphQL       │  │ DynamoDB       │
+│ (.NET 8)     │  │    Subscriptions)│  │ S3 Buckets     │
+└──────────────┘  └──────────────────┘  └─────────────────┘
+```
+
+#### Core Components
+
+**1. Frontend (Web Tier)**
+- **React SPA**: Built with Vite, TypeScript for optimal bundle size
+- **CDN**: CloudFront for global distribution
+- **Hosting**: S3 static website hosting
+- **Auth**: Cognito user pool with Google OAuth federation
+
+**2. API Layer (.NET 8 Lambda + API Gateway)**
+- HTTP REST API for job operations
+- JWT authorization via Cognito
+- VPC access to RDS for candidate/job data
+- Secrets Manager for sensitive credentials
+- Triggers Step Functions for async processing
+
+**3. CV/JD Processing Pipeline**
+- **Step Functions**: Orchestrates the processing workflow
+- **AWS Lambda (Python 3.12)**: Executes processing tasks
+  - `cv_jd_processor`: Extracts and enriches data
+  - `job_suggestion_engine`: Ranks jobs for candidates
+  - `candidate_ranking_engine`: Ranks candidates for jobs
+- **Container Images**: Stored in Amazon ECR for complex processing
+- **SQS Queue**: Buffers CV uploads, includes Dead Letter Queue (DLQ)
+- **S3 Bucket**: Raw CV storage with event notifications
+
+**4. AI & Document Analysis**
+- **Amazon Textract**: Extracts text from PDF resumes
+- **Amazon Bedrock**: Large Language Model for enrichment & matching
+- **Amazon Comprehend**: NLP for entity recognition and sentiment
+
+**5. Data Layer**
+- **RDS (PostgreSQL)**: Jobs, candidates, user data
+- **DynamoDB**: Real-time application tracking & matching results
+- **S3**: CV uploads, static assets
+
+**6. Real-time Updates**
+- **AWS AppSync**: GraphQL API with subscriptions
+- WebSocket connections for instant dashboard updates
+- Decoupled from main API for independent scaling
+
+**7. Infrastructure as Code**
+- **Terraform**: Provisions VPC, RDS, Cognito, networking, CI/CD
+- **AWS SAM**: Manages API Gateway + Lambda stack
+- **CodePipeline**: Automates deployment from GitHub
+
+---
+
+#### Data Flow Architecture
+
+```mermaid
+flowchart LR
+  subgraph web [Frontend]
+    SPA["React SPA"]
+  end
+  subgraph cdn [CDN & Auth]
+    CF["CloudFront"]
+    COG["Cognito"]
+  end
+  subgraph api [API]
+    APIGW["API Gateway"]
+    ApiFn["Lambda .NET8"]
+  end
+  subgraph ingest [CV Ingest]
+    S3raw["S3 CV Bucket"]
+    SQS["SQS Queue"]
+    IngestFn["Lambda Ingestion"]
+  end
+  subgraph orchestration [Processing]
+    SFN["Step Functions"]
+    ProcFn["Lambda CV/JD Processor"]
+    JS["Job Suggestion"]
+    CR["Candidate Ranking"]
+  end
+  subgraph ai [AI Services]
+    TX["Textract"]
+    BR["Bedrock"]
+    CM["Comprehend"]
+  end
+  subgraph data [Data]
+    RDS[("RDS<br/>PostgreSQL")]
+    DDB[("DynamoDB")]
+  end
+  subgraph realtime [Realtime]
+    APS["AWS AppSync<br/>GraphQL"]
+  end
+  
+  SPA → CF
+  SPA → COG
+  SPA → APIGW
+  APIGW → ApiFn
+  ApiFn → RDS
+  ApiFn → SFN
+  SPA → APS
+  
+  S3raw → SQS
+  SQS → IngestFn
+  IngestFn → SFN
+  
+  SFN → ProcFn
+  ProcFn → TX
+  ProcFn → BR
+  ProcFn → CM
+  
+  SFN → JS
+  SFN → CR
+  
+  ProcFn → RDS
+  ProcFn → DDB
+  
+  JS → APS
+  CR → APS
+```
+
+#### Optional Components
+
+- **AWS WAF**: Web Application Firewall on CloudFront
+- **Route 53**: Custom domain management
+- **ACM**: SSL/TLS certificates
+- **VPC Interface Endpoints**: Private access to AWS services
+- **NAT Gateway**: Outbound internet access from Lambda
+- **CloudWatch**: Logging and monitoring
+- **SNS**: Alarms for pipeline health
                 "ec2:CreateTags",
                 "ec2:CreateTransitGateway",
                 "ec2:CreateTransitGatewayPeeringAttachment",

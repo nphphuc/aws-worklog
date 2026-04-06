@@ -202,10 +202,3 @@ Bạn đã hoàn thành workshop SmartHire-AI! Bây giờ bạn hiểu:
 3. Chạy Terraform để cấp phát cơ sở hạ tầng
 4. Triển khai SAM template cho API
 5. Build và đẩy frontend lên S3
-
-5. Xóa các S3 bucket
-
-+ Mở bảng điều khiển S3
-+ Chọn bucket chúng ta đã tạo cho lab, nhấp chuột và xác nhận là empty. Nhấp Delete và xác nhận delete.
-+ 
-![delete s3](/images/5-Workshop/5.6-Cleanup/delete-s3.png)
