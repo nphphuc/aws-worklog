@@ -1,5 +1,5 @@
 ---
-title : "Technology Stack"
+title : "RDS PostgreSQL Schema"
 date : 2024-01-01
 weight : 5
 chapter : false
