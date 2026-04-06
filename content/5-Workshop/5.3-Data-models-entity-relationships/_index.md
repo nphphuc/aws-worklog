@@ -6,132 +6,88 @@ chapter : false
 pre : " <b> 5.3. </b> "
 ---
 
-#### Candidate Journey: CV Upload & Processing
+### A. Unified Database Schema
 
-This section details the complete end-to-end flow when a candidate uploads their resume (CV) to SmartHire-AI, from initial upload through intelligent job matching.
+```mermaid
+erDiagram
+    Users ||--|| CandidateProfiles : "has_profile"
+    Users ||--|| CandidateEmbeddings : "has_vector"
+    Companies ||--|{ Jobs : "posts"
+    Jobs ||--|| JobEmbeddings : "has_vector"
+    Users ||--|{ Applications : "applies_to"
+    Jobs ||--|{ Applications : "receives"
 
----
+    Users {
+        int id PK
+        string email
+        string cognito_sub
+        string user_type
+    }
 
-#### Step 1: CV Upload to S3
+    CandidateProfiles {
+        int id PK
+        int user_id FK
+        jsonb extracted_profile "skills, exp, education, summary"
+        timestamp updated_at
+    }
 
-When a candidate clicks "Upload CV" in the React SPA:
+    CandidateEmbeddings {
+        int id PK
+        int user_id FK
+        vector(1024) embedding
+        text raw_text "masked CV text"
+    }
 
-```
-1. Candidate selects PDF file
-2. React app sends signed S3 PUT request via Cognito JWT
-3. File uploads directly to S3 bucket under "candidates/" prefix
-4. S3 generates object created event
-```
+    Companies {
+        int id PK
+        string name
+        string industry
+    }
 
----
+    Jobs {
+        uuid id PK
+        uuid recruiter_id FK
+        text title
+        text description "Raw JD text — source of truth for matching"
+        timestamp created_at
+    }
 
-#### Step 2: Queue & Ingestion (SQS → Lambda)
+    JobEmbeddings {
+        int id PK
+        int job_id FK
+        vector(1024) embedding
+        text raw_text "JD text"
+    }
 
-```
-S3 Event Created
-        ↓
-S3 → SNS → SQS (CV Queue)
-        ↓
-Lambda Trigger "ingestion_trigger"
-```
-
-**Lambda Ingestion Function:**
-- Consumes SQS message containing S3 object metadata
-- Validates file format (PDF only)
-- Extracts S3 bucket, key, candidate ID from metadata
-- Initiates **AWS Step Functions** execution
-- Returns SQS acknowledgment
-
----
-
-#### Step 3: Pipeline Orchestration (AWS Step Functions)
-
-The Step Functions state machine manages the entire processing workflow:
-
-```
-START
-  ↓
-[Step 1] Invoke cv_jd_processor Lambda
-          - Extract text from PDF
-          - Parse CV data
-          - Generate embeddings
-  ↓
-[Step 2] Invoke job_suggestion_engine Lambda
-          - Compare CV embeddings vs Job embeddings
-          - Score & rank all open jobs
-  ↓
-[Step 3] Write Results
-          - Store tracking in DynamoDB
-          - Update RDS with match results
-  ↓
-[Step 4] Publish Results via AppSync
-          - Send GraphQL mutation to AppSync
-          - Real-time notification to candidate UI
-  ↓
-END (Success) or ERROR
+    Applications {
+        int id PK
+        int user_id FK
+        int job_id FK
+        string status "APPLIED|REVIEWING|REJECTED"
+        float match_score
+        timestamp created_at
+    }
 ```
 
----
+### B. Data Storage Strategy
 
-#### Step 4: CV & Document Processing (Lambda + AI)
+#### 1. Raw Assets (Amazon S3)
 
-**Lambda: cv_jd_processor (Python 3.12)**
+- **Bucket**: `smarthire-raw-assets`
+- **Paths**: `candidates/{userId}/cv.pdf`
+- **Purpose**: Immutable backup and audit trail for CV PDFs.
+- **Note**: JD PDFs are no longer uploaded to S3. JD text is stored in RDS `Jobs.Description`.
 
-Process:
-1. Download PDF from S3
-2. Amazon Textract → Extract text, tables, entities
-3. Parse structure:
-   - Name, email, phone
-   - Work experience
-   - Education
-   - Skills list
-4. Amazon Bedrock → Enrich data
-5. Amazon Comprehend → NLP analysis
-6. Generate embeddings using Bedrock
+#### 2. Relational & Vector Data (Amazon RDS PostgreSQL)
 
----
+Serves as the **Source of Truth** for business entities and semantic search.
 
-#### Step 5: Job Suggestion Engine
+- **Business Tables**: `Users`, `Jobs`, `Applications`, `Companies`.
+- **AI Tables**: `CandidateProfiles` (AI-extracted profile data).
+- **Pgvector**: `CandidateEmbeddings`, `JobEmbeddings` (1024-dim Cohere vectors).
+- **JD Source**: `Jobs.Description` column is read directly by `CvJdProcessor` Lambda.
 
-**Lambda: job_suggestion_engine**
+#### 3. Hot Store / Cache (Amazon DynamoDB)
 
-Process:
-1. Query RDS for all active jobs
-2. For each job:
-   - Calculate cosine similarity with CV embeddings
-   - Score based on skill match, experience level, location
-3. Sort by match score (descending)
-4. Filter by threshold (>0.6 minimum match)
-5. Select top 10 most relevant jobs
-
----
-
-#### Step 6: Real-time UI Update (AWS AppSync)
-
-Once matching is complete:
-
-```
-Lambda publishes AppSync GraphQL mutation:
-"JobSuggestionsReady"
-        ↓
-AppSync broadcasts via subscription
-        ↓
-Candidate React SPA receives update
-        ↓
-Dashboard re-renders (NO page refresh needed)
-```
-
----
-
-#### Performance & Monitoring
-
-**CloudWatch Metrics:**
-- Lambda execution duration
-- SQS queue depth
-- Step Functions execution time
-- Textract processing cost per document
-
-**Alarms:**
-- SQS queue > 100 messages
-- Lambda error rate > 1%
-- Processing time > 5 minutes
+- **Table**: `ApplicationTracking` (Single Table Design)
+- **Purpose**: High-frequency read/write operations for real-time UI updates (suggestions, rankings, parse results).
