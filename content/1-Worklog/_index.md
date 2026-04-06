@@ -26,8 +26,8 @@ pre: " <b> 1. </b> "
 
 **Week 10 [09/03/2026 - 15/03/2026]:** [Implementing project #2](1.10-week10/)
 
-**Week 11 [16/03/2026 - 22/03/2026]:** [Test & fix bugs #1](1.11-week11/)
+**Week 11 [16/03/2026 - 22/03/2026]:** [Testing & fixing bugs #1](1.11-week11/)
 
-**Week 12 [23/03/2026 - 29/03/2026]:** [Test & fix bugs #2](1.12-week12/)
+**Week 12 [23/03/2026 - 29/03/2026]:** [Testing & fixing bugs #2](1.12-week12/)
 
-**Week 13 [30/03/2026 - 05/04/2026]:** [Test & fix bugs #3](1.13-week13/)
+**Week 13 [30/03/2026 - 05/04/2026]:** [Testing & fixing bugs #3](1.13-week13/)
