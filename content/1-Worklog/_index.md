@@ -18,16 +18,16 @@ pre: " <b> 1. </b> "
 
 **Week 6 [09/02/2026 - 15/02/2026]:** [Studying AWS services](1.6-week6/)
 
-**Week 7 [16/02/2026 - 22/02/2026]:** [Happy Tet](1.7-week7/)
+**Week 7 [16/02/2026 - 22/02/2026]:** [Happy Tết](1.7-week7/)
 
 **Week 8 [23/02/2026 - 01/03/2026]:** [Re-discussing about project](1.8-week8/)
 
-**Week 9 [02/03/2026 - 08/03/2026]:** [Implementing project](1.9-week9/)
+**Week 9 [02/03/2026 - 08/03/2026]:** [Implementing project #1](1.9-week9/)
 
-**Week 10 [09/03/2026 - 15/03/2026]:** [Test & fix bugs](1.10-week10/)
+**Week 10 [09/03/2026 - 15/03/2026]:** [Implementing project #2](1.10-week10/)
 
-**Week 11 [16/03/2026 - 22/03/2026]:** [Test & fix bugs](1.11-week11/)
+**Week 11 [16/03/2026 - 22/03/2026]:** [Test & fix bugs #1](1.11-week11/)
 
-**Week 12 [23/03/2026 - 29/03/2026]:** [Test & fix bugs](1.12-week12/)
+**Week 12 [23/03/2026 - 29/03/2026]:** [Test & fix bugs #2](1.12-week12/)
 
-**Week 13 [30/03/2026 - 05/04/2026]:** [Test & fix bugs](1.13-week13/)
+**Week 13 [30/03/2026 - 05/04/2026]:** [Test & fix bugs #3](1.13-week13/)
