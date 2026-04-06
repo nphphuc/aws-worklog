@@ -22,8 +22,8 @@ sequenceDiagram
     participant DDB as DynamoDB
     participant APP as AppSync
 
-  Note over C, APP: Candidate opens dashboard and subscribes onJobSuggestions(candidateId)
-  C->>APP: GraphQL Subscription (Cognito JWT)
+    Note over C, APP: Candidate opens dashboard and subscribes onJobSuggestions(candidateId)
+    C->>APP: GraphQL Subscription (Cognito JWT)
 
     Note over C, L1: 1. Ingestion
     C->>S3: Upload CV.pdf
