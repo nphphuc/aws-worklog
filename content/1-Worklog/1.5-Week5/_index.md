@@ -30,31 +30,10 @@ pre: " <b> 1.5. </b> "
 
 ### Week 5 Achievements:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* Implemented automation scripts using the AWS CLI for basic create/list/describe workflows.
+* Designed a NoSQL data model and created DynamoDB tables; tested capacity, indexes and basic queries.
+* Deployed Amazon ElastiCache (Redis) and validated caching patterns for a demo application.
+* Configured advanced networking (VPC peering) and created required Interface/Private Endpoints.
+* Set up a CloudFront distribution for an S3 static site; verified behaviors and performed invalidation.
+* Validated automation and networking using both Console and CLI.
 
-* Successfully created and configured an AWS Free Tier account.
-
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
-
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
-
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...

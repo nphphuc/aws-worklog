@@ -12,8 +12,11 @@ pre: " <b> 1.3. </b> "
 
 ### Mục tiêu tuần 3:
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Triển khai và quản lý các instance EC2: chọn loại instance, AMI, EBS và truy cập SSH.
+* Tạo và gán IAM role cho EC2 và hiểu về instance profile.
+* Sử dụng AWS Cloud9 để phát triển, kiểm thử và prototype nhanh trên cloud.
+* Cấu hình Amazon S3 cho hosting trang tĩnh và thiết lập chính sách bucket cơ bản.
+* Triển khai và kết nối tới Amazon RDS; hiểu về engine, backup và security group.
 
 ### Các công việc cần triển khai trong tuần này:
 | Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
@@ -27,33 +30,12 @@ pre: " <b> 1.3. </b> "
 
 ### Kết quả đạt được tuần 3:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* Đã khởi tạo EC2 (t2.micro), tạo key pair và kiểm tra kết nối SSH, AMI và EBS.
+* Đã tạo và gán IAM role cho EC2 (instance profile) và kiểm tra quyền truy cập.
+* Đã thiết lập AWS Cloud9 workspace và triển khai prototype nhỏ.
+* Đã tạo S3 bucket cho website tĩnh và cấu hình hosting cùng chính sách bucket cơ bản.
+* Đã provision RDS (ví dụ MySQL), cấu hình security group và backup; kiểm tra kết nối từ EC2/Cloud9.
+* Kiểm chứng tài nguyên và kết nối bằng cả Console và CLI.
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
 
 

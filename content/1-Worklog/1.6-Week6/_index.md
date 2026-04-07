@@ -29,31 +29,10 @@ pre: " <b> 1.6. </b> "
 
 ### Week 6 Achievements:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* Implemented Lambda@Edge experiments for CloudFront (header rewrite and simple redirects).
+* Planned and deployed sample Windows workloads with appropriate sizing considerations.
+* Configured AWS Managed Microsoft AD and joined a Windows instance to the domain; verified integration.
+* Designed a highly-available web application architecture using ELB, Auto Scaling and multi-AZ deployment; tested failover.
+* Deployed a HA sample stack (ELB + Auto Scaling + multi-AZ) and validated health checks, failover and fault tolerance.
+* Used Console and CLI to validate deployments, monitoring and failover behavior.
 
-* Successfully created and configured an AWS Free Tier account.
-
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
-
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
-
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...

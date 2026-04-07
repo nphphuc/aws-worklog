@@ -12,8 +12,11 @@ pre: " <b> 1.4. </b> "
 
 ### Mục tiêu tuần 4:
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Khám phá Amazon Lightsail để thiết lập VM và networking đơn giản.
+* Triển khai ứng dụng container bằng Lightsail Containers và quản lý image.
+* Thiết kế và cấu hình Auto Scaling group cho EC2 để tự động mở rộng ứng dụng.
+* Giám sát tài nguyên và thiết lập cảnh báo bằng Amazon CloudWatch (metrics và logs).
+* Cấu hình định tuyến DNS và kịch bản DNS hybrid bằng Amazon Route 53.
 
 ### Các công việc cần triển khai trong tuần này:
 | Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
@@ -27,33 +30,12 @@ pre: " <b> 1.4. </b> "
 
 ### Kết quả đạt được tuần 4:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* Đã tạo và kiểm tra instance trên Amazon Lightsail; xác thực networking và tạo snapshot.
+* Đã triển khai ứng dụng container bằng Lightsail Containers và quản lý image, deployment.
+* Đã thiết kế và cấu hình Auto Scaling group cho EC2 (sử dụng launch template/launch configuration) cho ứng dụng demo và kiểm chứng hành vi scale.
+* Đã bật CloudWatch metrics, tạo log group và thiết lập cảnh báo cơ bản để giám sát ứng dụng demo.
+* Đã cấu hình record Route 53 để routing và xác minh hành vi DNS; thử kịch bản DNS hybrid khi có thể.
+* Kiểm chứng triển khai và giám sát bằng cả Console và CLI.
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
 
 

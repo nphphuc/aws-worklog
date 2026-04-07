@@ -12,8 +12,10 @@ pre: " <b> 1.6. </b> "
 
 ### Mục tiêu tuần 6:
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Triển khai các pattern edge computing sử dụng Amazon CloudFront và Lambda@Edge.
+* Lên kế hoạch và triển khai workloads Windows trên AWS với sizing và lưu ý về licensing.
+* Cấu hình AWS Managed Microsoft AD và tích hợp với các instance Windows và ứng dụng yêu cầu directory.
+* Thiết kế và xây dựng ứng dụng web có độ sẵn sàng cao sử dụng load balancer, triển khai multi-AZ và kiến trúc chịu lỗi.
 
 ### Các công việc cần triển khai trong tuần này:
 | Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
@@ -26,33 +28,13 @@ pre: " <b> 1.6. </b> "
 
 
 ### Kết quả đạt được tuần 6:
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+* Đã thử nghiệm Lambda@Edge cho CloudFront (ví dụ: rewrite header hoặc redirect đơn giản).
+* Đã lên kế hoạch và triển khai workload Windows mẫu với sizing phù hợp.
+* Đã cấu hình AWS Managed Microsoft AD và join instance Windows vào domain; kiểm tra tích hợp.
+* Đã thiết kế và kiểm chứng kiến trúc ứng dụng web có độ sẵn sàng cao: ELB, Auto Scaling và triển khai multi-AZ; thử nghiệm failover.
+* Đã triển khai mẫu HA (ELB + Auto Scaling + multi-AZ) và xác thực health checks, failover và khả năng chịu lỗi.
+* Kiểm chứng triển khai, giám sát và hành vi failover bằng cả Console và CLI.
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
 
 

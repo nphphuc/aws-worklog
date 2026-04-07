@@ -30,31 +30,10 @@ pre: " <b> 1.3. </b> "
 
 ### Week 3 Achievements:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* Launched an EC2 instance (t2.micro), created a key pair and verified SSH access, AMI and EBS.
+* Created and attached an IAM role to EC2 (instance profile) and verified permissions.
+* Set up an AWS Cloud9 workspace and deployed a small prototype.
+* Created an S3 bucket for a static website and configured hosting and a basic bucket policy.
+* Provisioned an RDS instance (e.g., MySQL), configured security groups and backups, and tested connectivity from EC2/Cloud9.
+* Validated resources and connectivity using both Console and CLI.
 
-* Successfully created and configured an AWS Free Tier account.
-
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
-
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
-
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
