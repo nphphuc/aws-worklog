@@ -19,7 +19,7 @@ pre : " <b> 5.3. </b> "
 - **Purpose**: Immutable backup and audit trail for CV PDFs.
 - **Note**: JD PDFs are no longer uploaded to S3. JD text is stored in RDS `Jobs.Description`.
 
-#### 2. Relational & Vector Data (Amazon RDS PostgreSQL)
+#### 2. Relational & Vector Data (Amazon RDS Postgres)
 
 Serves as the **Source of Truth** for business entities and semantic search.
 
