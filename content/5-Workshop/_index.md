@@ -19,7 +19,7 @@ pre: " <b> 5. </b> "
 - **Real-time Updates**: AWS AppSync GraphQL subscriptions push results instantly
 - **AI-Powered Matching**: Bedrock, Comprehend, and Textract power intelligent matching
 
-### Key Changes
+#### Key Changes
 
 - **No JD PDF Upload**: Job Description text is read directly from RDS (Jobs.Description) instead of uploading PDF to S3.
 - **Merged Processing Lambda**: text_processor and vector_ops merged into a single cv_jd_processor Lambda.
@@ -28,15 +28,14 @@ pre: " <b> 5. </b> "
 - **Reduced Latency**: One fewer Lambda cold start per execution (2 Lambdas merged into 1).
 - **Real-Time Contract via AppSync**: Matching engines publish updates through AppSync GraphQL mutations, and frontend receives filtered subscriptions.
 
-### Quick Explanation (Easy View)
-If you remember only 4 things, remember these:
+#### Quick Explanation
 
 1. Candidate upload CV -> system parses CV -> computes top matching jobs -> pushes realtime to candidate UI.
 2. Recruiter creates job -> system embeds JD -> ranks top candidates -> pushes realtime to recruiter UI.
 3. Step Functions always has 3 steps: `CvJdProcessor -> RoutingChoice -> Engine`.
 4. AppSync is only the realtime delivery layer (publish from Lambda, subscribe from frontend), not the compute layer.
 
-### Real-Time Contract (Current)
+#### Real-Time Contract (Current)
 - Mutation: `publishJobSuggestions(candidateId, suggestions, updatedAt)`
 - Mutation: `publishCandidateRanking(jobId, rankedCandidates, updatedAt)`
 - Subscription: `onJobSuggestions(candidateId)`
