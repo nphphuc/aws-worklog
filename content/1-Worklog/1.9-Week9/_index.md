@@ -18,7 +18,7 @@ pre: " <b> 1.9. </b> "
 | 3   | Write code for functions of role Recruiter phase 1 | 03/03/2026 | 03/03/2026      |  |
 | 4   | Write code for functions of role Recruiter phase 2 | 04/03/2026 | 04/03/2026      |  |
 | 5   | Write code for functions of role Admin             | 05/03/2026 | 05/03/2026      |  |
-| 6   |                                                    | 06/03/2026 | 06/03/2026      |  |
+| 6   | Update DB                                          | 06/03/2026 | 06/03/2026      |  |
 
 
 ### Week 9 Achievements:
