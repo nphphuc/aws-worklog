@@ -13,11 +13,11 @@ pre: " <b> 1.8. </b> "
 ### Tasks to be carried out this week:
 | Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
 | --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | Re-pick the topic                                                                                              | 08/11/2025 | 08/11/2025      |
-| 3   | Draw ERD                                           | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | Write DB | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | Start to implement entites                          | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | Write simple logics                                                                              | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 2   | Re-pick the topic                | 23/02/2026 | 23/02/2026      |
+| 3   | Draw ERD                         | 24/02/2026 | 24/02/2026      |  |
+| 4   | Write DB                         | 25/02/2026 | 25/02/2026      |  |
+| 5   | Start to implement entites       | 26/02/2026 | 26/02/2026      |  |
+| 6   | Write simple logics              | 27/02/2026 | 27/02/2026      |  |
 
 
 ### Week 8 Achievements:
